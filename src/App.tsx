@@ -1,7 +1,12 @@
 import { Header, Footer } from "./components";
 
 const App = () => {
-  return <></>;
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
 };
 
 export default App;
