@@ -7,7 +7,7 @@ interface LanguagesModalProps {
 }
 
 const LanguagesModal: React.FC<LanguagesModalProps> = ({
-  inTop = false,
+  inTop,
   active,
   setActive,
 }) => {

@@ -69,7 +69,11 @@ const Header = ({ t }: { t: TFunction }) => {
                 alt="arrow"
               />
             </div>
-            <LanguagesModal active={modalActive} setActive={setModalActive} />
+            <LanguagesModal
+              inTop={false}
+              active={modalActive}
+              setActive={setModalActive}
+            />
           </div>
         </div>
         <section className="flex xl:hidden absolute right-[16px] md:right-[26px]">
@@ -156,6 +160,7 @@ const Header = ({ t }: { t: TFunction }) => {
                       />
                     </div>
                     <LanguagesModal
+                      inTop={false}
                       active={modalActive}
                       setActive={setModalActive}
                     />
