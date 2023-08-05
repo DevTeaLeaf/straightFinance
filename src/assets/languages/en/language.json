@@ -1,3 +1,9 @@
 {
-  "test": "test"
+  "about_us": "About us",
+  "stacking": "Staking",
+  "ref_system": "Referral system",
+  "token_and_nft": "Token and NFT",
+  "connect_wallet": "Connect Wallet",
+  "claim": "Claim",
+  "rights": "All rights registered"
 }
