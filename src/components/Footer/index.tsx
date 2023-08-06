@@ -18,8 +18,8 @@ const Footer = ({ t }: { t: TFunction }) => {
   const [modalActive, setModalActive] = useState(false);
   return (
     <>
-      <div className="w-full h-[1px] bg-[#0EB78C] mb-4 block md:hidden"></div>
       <footer className="px-[10px] md:px-[80px] lg:px-[140px] text-[#fff] py-3 max-w-[1440px] mx-auto w-full">
+        <div className="w-full h-[1px] bg-[#0EB78C] mb-4 block md:hidden"></div>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-[10px]">
             <img src={copyright} alt="copyright" className="w-4 md:w-6" />

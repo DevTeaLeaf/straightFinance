@@ -8,6 +8,7 @@ html,
 body {
   background-color: #090e0e;
   height: 100%;
+  overflow-x: hidden;
 }
 /* Fonts */
 .manrope {
@@ -24,4 +25,18 @@ body {
     rgba(111, 228, 198, 0.08) 0%,
     rgba(0, 0, 0, 0.55) 86.42%
   );
+}
+.backlight {
+  width: 431px;
+  height: 305px;
+  border-radius: 431px;
+  background: #147073;
+  filter: blur(200px);
+}
+.minBacklight {
+  border-radius: 431px;
+  background: #147073;
+  filter: blur(200px);
+  width: 431px;
+  height: 305px;
 }

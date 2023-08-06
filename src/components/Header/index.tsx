@@ -12,7 +12,7 @@ const Header = ({ t }: { t: TFunction }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   return (
-    <header className="w-full text-[#fff] manrope">
+    <header className="w-full text-[#fff] manrope z-10">
       <div className="flex items-center justify-center h-[80px] mx-auto">
         <div className="flex items-center justify-between xl:justify-center w-full xl:px-0 pr-[60px] pl-4">
           <h3 className="text-[14px] md:text-[19px] md:leading-4 leading-3 font-bold cursor-pointer whitespace-nowrap">

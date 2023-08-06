@@ -5,5 +5,17 @@ import medium from "./medium.png";
 import telegram from "./telegram.png";
 import twitter from "./twitter.png";
 import copyright from "./copyright.png";
+import bgArrow from "./arrow_bg.png";
+import net from "./net.png";
 
-export { arrowDown, wallet, discord, medium, telegram, twitter, copyright };
+export {
+  arrowDown,
+  wallet,
+  discord,
+  medium,
+  telegram,
+  twitter,
+  copyright,
+  bgArrow,
+  net,
+};
