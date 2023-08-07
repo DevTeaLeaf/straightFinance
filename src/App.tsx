@@ -3,75 +3,227 @@ import { withTranslation } from "react-i18next";
 
 import { Header, Footer, YouTubePlayer } from "./components";
 
-import { bgArrow, net, twitter, medium, discord, telegram } from "#assets/img";
+import {
+  bgArrow,
+  statisticBg,
+  net,
+  twitter,
+  medium,
+  discord,
+  telegram,
+} from "#assets/img";
 
 const App = ({ t }: { t: TFunction }) => {
   return (
-    <div className="flex flex-col min-h-[100vh] gap-[100px]">
-      <Header />
-      <div className="grow max-w-[1440px] manrope mx-auto">
-        <div
-          style={{ backgroundImage: `url(${net})` }}
-          className="flex flex-col items-center justify-center gap-[30px] netBg"
-        >
-          <div className="minBacklight absolute top-[10%] md:hidden"></div>
-          <div className="absolute left-[-5%] top-[0] z-[0] md:block hidden">
-            <img src={bgArrow} alt="bgArrow" />
-            <div className="backlight absolute top-[35%] left-[5%]"></div>
+    <>
+      <div className="flex flex-col min-h-[100vh] gap-[100px]">
+        <Header />
+        <div className="grow max-w-[1440px] manrope mx-auto z-0">
+          <div
+            style={{ backgroundImage: `url(${net})` }}
+            className="flex flex-col items-center justify-center gap-[30px] netBg"
+          >
+            <div className="minBacklight absolute top-[10%] md:hidden"></div>
+            <div className="absolute left-[-5%] top-[0] z-0 md:block hidden">
+              <img src={bgArrow} alt="bgArrow" />
+              <div className="backlight absolute top-[35%] left-[5%]"></div>
+            </div>
+            <div className="absolute right-[-3%] top-[-12%] z-0 md:block hidden">
+              <img src={bgArrow} alt="bgArrow" className="rotate-[180deg]" />
+              <div className="backlight absolute top-[40%] right-[5%]"></div>
+            </div>
+            <h1 className="text-[#6FE4C6] text-center text-[24px] md:text-[48px] font-bold leading-[30px] md:leading-[58px] max-w-[300px] md:max-w-[750px]">
+              {t("main_h1")}
+            </h1>
+            <h3 className="text-white text-[14px] md:text-[18px] leading-[17.5px] md:leading-6 font-light max-w-[360px] md:max-w-[645px] text-center">
+              {t("main_h3")}
+            </h3>
+            <div className="flex items-center flex-col md:flex-row gap-5 mb-[100px]">
+              <button className="bg-[#6FE4C6] rounded-[87px] ml-[10px]">
+                <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
+                  {t("how_it_works")}
+                </p>
+              </button>
+              <div className="flex items-center gap-5">
+                {" "}
+                <a href="#">
+                  <img
+                    src={telegram}
+                    alt="telegram"
+                    className="w-6 h-6 md:w-9 md:h-9"
+                  />
+                </a>
+                <a href="#">
+                  <img
+                    src={twitter}
+                    alt="twitter"
+                    className="w-6 h-6 md:w-9 md:h-9"
+                  />
+                </a>
+                <a href="#">
+                  <img
+                    src={discord}
+                    alt="discord"
+                    className="w-6 h-6 md:w-9 md:h-9"
+                  />
+                </a>
+                <a href="#">
+                  <img
+                    src={medium}
+                    alt="medium"
+                    className="w-6 h-6 md:w-9 md:h-9"
+                  />
+                </a>
+              </div>
+            </div>
+            <YouTubePlayer videoId={"Zi8vJ_lMxQI"} />
           </div>
-          <div className="absolute right-[-3%] top-[-8%] z-[0] md:block hidden">
-            <img src={bgArrow} alt="bgArrow" className="rotate-[180deg]" />
-            <div className="backlight absolute top-[40%] right-[5%]"></div>
-          </div>
-          <h1 className="text-[#6FE4C6] text-center text-[24px] md:text-[48px] font-bold leading-[30px] md:leading-[58px] max-w-[300px] md:max-w-[750px]">
-            {t("main_h1")}
-          </h1>
-          <h3 className="text-white text-[14px] md:text-[18px] leading-[17.5px] md:leading-6 font-light max-w-[360px] md:max-w-[645px] text-center">
-            {t("main_h3")}
-          </h3>
-          <div className="flex items-center flex-col md:flex-row gap-5 mb-[100px]">
-            <button className="bg-[#6FE4C6] rounded-[87px] ml-[10px]">
-              <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
-                {t("how_it_works")}
-              </p>
-            </button>
-            <div className="flex items-center gap-5">
-              {" "}
-              <a href="#">
-                <img
-                  src={telegram}
-                  alt="telegram"
-                  className="w-6 h-6 md:w-9 md:h-9"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src={twitter}
-                  alt="twitter"
-                  className="w-6 h-6 md:w-9 md:h-9"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src={discord}
-                  alt="discord"
-                  className="w-6 h-6 md:w-9 md:h-9"
-                />
-              </a>
-              <a href="#">
-                <img
-                  src={medium}
-                  alt="medium"
-                  className="w-6 h-6 md:w-9 md:h-9"
-                />
-              </a>
+          <div className="mt-[80px] flex flex-col items-center gap-[60px]">
+            <div className="absolute mt-[-70px] z-0">
+              <img src={statisticBg} alt="statisticBg" />
+              <div className="statisticBacklight absolute top-[30%] right-[30%]"></div>
+            </div>
+            <div className="flex flex-col items-center gap-4 z-10">
+              <h3 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
+                {t("statistics")}
+              </h3>
+              <h4 className="text-white text-[14px] md:text-[19px] font-medium  md:font-bold leading-[18.2px] md:leading-4">
+                STRAIGHT FINANCE
+              </h4>
+            </div>
+            <div className="flex items-center gap-5 md:gap-10 inter z-10 flex-wrap justify-center flex-col md:flex-row">
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  3 000
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("users")}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  1 500
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("queue")}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  1 500 000
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("invested")}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  1 500 000
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("paid")}
+                </p>
+              </div>
             </div>
           </div>
-          <YouTubePlayer videoId={"Zi8vJ_lMxQI"} />
+          <div className="mt-[200px] flex flex-col items-center gap-[60px]">
+            <div className="absolute mt-[-70px] z-0">
+              <img src={statisticBg} alt="statisticBg" />
+              <div className="statisticBacklight absolute top-[30%] right-[30%]"></div>
+            </div>
+            <div className="flex flex-col items-center gap-4 z-10">
+              <h3 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
+                {t("my_statistics")}
+              </h3>
+              <h4 className="text-white text-[14px] md:text-[19px] font-medium  md:font-bold leading-[18.2px] md:leading-4">
+                STRAIGHT FINANCE
+              </h4>
+            </div>
+            <div className="flex items-center gap-5 md:gap-10 inter z-10 flex-wrap justify-center flex-col md:flex-row">
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  72
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("my_queue")}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  1 500
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("my_invested")}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  1 500
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("to_claim")}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  1 500
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("future_claim")}
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-[6px]">
+                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
+                  1 500 000
+                </h3>
+                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
+                  {t("all_claim")}
+                </p>
+              </div>
+            </div>
+            <button className="bg-[#6FE4C6] rounded-[87px]">
+              <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
+                {t("claim")}
+              </p>
+            </button>
+          </div>
+          <div className="mt-[144px] flex flex-col items-center gap-10">
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex gap-3 text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
+                <h3 className="text-white">{t("earnings")}</h3>
+                <h3 className="textGradient">{t("refs")}</h3>
+              </div>
+              <h4 className="text-white text-[14px] leading-[18.2px] md:text-[18px] font-light md:leading-[23px] max-w-[282px] md:max-w-full text-center">
+                {t("percents")}
+              </h4>
+            </div>{" "}
+            <div className="flex items-center justify-center lg:flex-nowrap flex-wrap gap-[50px] text-[#fff] text-[16px] leading-[22px]">
+              <div className="w-full max-w-[348px] refBox h-[112px] flex items-center justify-center whitespace-nowrap">
+                <p className="px-[43px] pt-[20px] pb-[45px] md:py-[45px]">
+                  {t("min_invest")}
+                </p>
+              </div>
+              <div className="w-full max-w-[348px] refBox h-[112px] flex items-center justify-center whitespace-nowrap">
+                <p className="px-[43px] pt-[20px] pb-[45px] md:py-[45px]">
+                  {t("instant_payouts")}
+                </p>
+              </div>
+              <div className="w-full max-w-[348px] refBox h-[112px] flex items-center justify-center whitespace-nowrap">
+                <p className="px-[43px] pt-[20px] pb-[45px] md:py-[45px]">
+                  {t("payment_from_friend")}
+                </p>
+              </div>
+            </div>
+            <button className="bg-[#6FE4C6] rounded-[87px]">
+              <p className="text-[#000] px-[60px] py-[15px] text-[14px] font-semibold leading-6">
+                {t("become_ref")}
+              </p>
+            </button>
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

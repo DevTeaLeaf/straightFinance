@@ -7,13 +7,13 @@ interface YouTubePlayerProps {
 
 const YouTubePlayer: React.FC<YouTubePlayerProps> = ({ videoId }) => {
   const [opts, setOpts] = useState({
-    height: "400vh",
-    width: "700vw",
+    height: "300vh",
+    width: "350vw",
     playerVars: {
       autoplay: 0,
     },
   });
-  useEffect(() => {
+  const handleResize = () => {
     if (window.innerWidth >= 767) {
       setOpts({
         height: "400vh",
@@ -39,7 +39,11 @@ const YouTubePlayer: React.FC<YouTubePlayerProps> = ({ videoId }) => {
         },
       });
     }
-  }, [window.innerWidth]);
+  };
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   return <YouTube videoId={videoId} opts={opts} />;
 };

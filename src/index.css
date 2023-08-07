@@ -4,11 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
 body {
   background-color: #090e0e;
   height: 100%;
   overflow-x: hidden;
+  user-select: none;
 }
 /* Fonts */
 .manrope {
@@ -39,4 +39,30 @@ body {
   filter: blur(200px);
   width: 431px;
   height: 305px;
+}
+.textGradient {
+  background: linear-gradient(
+    90deg,
+    #6fe4c6 0.82%,
+    #0eb78c 51.98%,
+    #20829a 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.statisticBacklight {
+  width: 638px;
+  height: 133px;
+  background-color: #0eb78c;
+  opacity: 0.699999988079071;
+  filter: blur(109.5px);
+}
+.refBox {
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(111, 228, 198, 0.4) 0%,
+    rgba(111, 228, 198, 0) 86.42%
+  );
 }

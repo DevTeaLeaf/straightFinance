@@ -30,7 +30,7 @@ const Header = ({ t }: { t: TFunction }) => {
             className="walletButton"
             // onClick={open}
           >
-            <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px]">
+            <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px] ">
               <img src={wallet} alt="wallet" />
               <p className="text-[12px] md:text-[14px] font-semibold leading-6 whitespace-nowrap">
                 {/* {account.address
@@ -76,7 +76,7 @@ const Header = ({ t }: { t: TFunction }) => {
             />
           </div>
         </div>
-        <section className="flex xl:hidden absolute right-[16px] md:right-[26px]">
+        <section className="flex xl:hidden absolute right-[16px] md:right-[26px] z-50">
           <div
             className="space-y-2 cursor-pointer"
             onClick={() => setIsNavOpen((prev) => !prev)}

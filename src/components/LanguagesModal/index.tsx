@@ -20,7 +20,7 @@ const LanguagesModal: React.FC<LanguagesModalProps> = ({
       <div
         className={
           active
-            ? `rounded-[10px] fixed transition-[0.5s] ${
+            ? `rounded-[10px] absolute transition-[0.5s] ${
                 inTop ? "mt-[-150px] ml-[-5%]" : "mt-[10px]"
               } languagesModal`
             : "hidden transition-[0.5s]"

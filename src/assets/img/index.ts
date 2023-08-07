@@ -7,6 +7,7 @@ import twitter from "./twitter.png";
 import copyright from "./copyright.png";
 import bgArrow from "./arrow_bg.png";
 import net from "./net.png";
+import statisticBg from "./statistic_bg.png";
 
 export {
   arrowDown,
@@ -18,4 +19,5 @@ export {
   copyright,
   bgArrow,
   net,
+  statisticBg,
 };

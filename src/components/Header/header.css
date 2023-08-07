@@ -16,14 +16,14 @@
   align-items: center;
 }
 
-.headerButton {
+.walletButton {
   position: relative;
   border-radius: 87px;
   background: #090e0e;
   text-align: center;
 }
 
-.headerButton::before {
+.walletButton::before {
   content: "";
   position: absolute;
   top: -1px;
