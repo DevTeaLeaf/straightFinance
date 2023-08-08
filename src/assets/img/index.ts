@@ -8,6 +8,12 @@ import copyright from "./copyright.png";
 import bgArrow from "./arrow_bg.png";
 import net from "./net.png";
 import statisticBg from "./statistic_bg.png";
+import bnb from "./bnb.png";
+import metamask from "./metamask.png";
+import scene from "./scene.png";
+import trust from "./trust.png";
+import usdt from "./usdt.png";
+import walletconnect from "./walletconnect.png";
 
 export {
   arrowDown,
@@ -20,4 +26,10 @@ export {
   bgArrow,
   net,
   statisticBg,
+  bnb,
+  metamask,
+  scene,
+  trust,
+  usdt,
+  walletconnect,
 };

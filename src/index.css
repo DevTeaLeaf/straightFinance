@@ -66,3 +66,20 @@ body {
     rgba(111, 228, 198, 0) 86.42%
   );
 }
+.gradientLineBg {
+  background: linear-gradient(to right, #6fe4c6 0%, rgba(14, 183, 140, 0) 100%);
+}
+.underlinedLink {
+  position: relative;
+  text-decoration: none;
+}
+
+.underlinedLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+}

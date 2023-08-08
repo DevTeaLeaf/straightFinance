@@ -11,6 +11,12 @@ import {
   medium,
   discord,
   telegram,
+  bnb,
+  metamask,
+  trust,
+  scene,
+  usdt,
+  walletconnect,
 } from "#assets/img";
 
 const App = ({ t }: { t: TFunction }) => {
@@ -219,6 +225,95 @@ const App = ({ t }: { t: TFunction }) => {
                 {t("become_ref")}
               </p>
             </button>
+          </div>
+          <div
+            style={{ backgroundImage: `url(${net})` }}
+            className="mt-[101px] flex flex-col text-[#fff]"
+          >
+            <div className="relative">
+              <h1 className="font-bold leading-[21px] md:leading-[51px] text-[20px] md:text-[48px] mb-4 ml-[15px] md:ml-[80px]">
+                {t("buy")}
+              </h1>
+              <div className="gradientLineBg w-[500px] h-[1px] ml-[-100px] hidden md:flex"></div>
+              <div className="minBacklight absolute top-[-100%] left-[-20%]"></div>
+            </div>
+            <div className="flex flex-col items-center mt-5 md:mt-10 gap-[70px] md:gap-[140px] max-w-[1185px] px-[15px]">
+              <div className="flex items-center gap-[30px] md:gap-[70px] flex-col lg:flex-row">
+                <div className="flex items-start flex-col gap-3">
+                  <h3 className="text-[16px] md:text-[32px] font-bold leading-[21px] md:leading-10">
+                    {t("step")} 1
+                  </h3>
+                  <p className="text-[14px] md:text-[18px] leading-[18px]  md:leading-6 max-w-[345px] md:max-w-[640px]">
+                    {t("step_1")} -{" "}
+                    <a
+                      href="https://t.me/straight_finance"
+                      target="_blank"
+                      className="underlinedLink"
+                    >
+                      @straight_finance
+                    </a>
+                  </p>
+                </div>
+                <div className="flex items-center gap-[30px] relative">
+                  <img
+                    className="max-w-[80px] max-h-[80px] md:max-w-[150px] md:max-h-[150px]"
+                    src={metamask}
+                    alt="metamask"
+                  />
+                  <img
+                    className="max-w-[80px] max-h-[80px] md:max-w-[150px] md:max-h-[150px]"
+                    src={walletconnect}
+                    alt="walletconnect"
+                  />
+                  <img
+                    className="max-w-[80px] max-h-[80px] md:max-w-[150px] md:max-h-[150px]"
+                    src={trust}
+                    alt="trust"
+                  />
+                  <div className="minBacklight absolute top-[-60%] right-[-90%]"></div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between gap-[30px] md:gap-[70px] w-full flex-col-reverse lg:flex-row">
+                <div className="flex items-center gap-[108px]">
+                  <img
+                    className="max-w-[80px] max-h-[80px] md:max-w-[150px] md:max-h-[150px]"
+                    src={usdt}
+                    alt="usdt"
+                  />
+                  <img
+                    className="max-w-[80px] max-h-[80px] md:max-w-[150px] md:max-h-[150px]"
+                    src={bnb}
+                    alt="bnb"
+                  />
+                </div>
+                <div className="flex items-start lg:items-end flex-col gap-3">
+                  <h3 className="text-[16px] md:text-[32px] font-bold leading-[21px] md:leading-10">
+                    {t("step")} 2
+                  </h3>
+                  <p className="text-[14px] md:text-[18px] leading-[18px]  md:leading-6 max-w-[345px] md:max-w-[640px] lg:max-w-[520px] text-start lg:text-end">
+                    {t("step_2")}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center md:gap-[185px] flex-col lg:flex-row">
+                <div className="flex items-start flex-col gap-3">
+                  <h3 className="text-[16px] md:text-[32px] font-bold leading-[21px] md:leading-10">
+                    {t("step")} 3
+                  </h3>
+                  <p className="text-[14px] md:text-[18px] leading-[18px]  md:leading-6 max-w-[345px] md:max-w-[640px]">
+                    {t("step_3")}
+                  </p>
+                </div>
+                <div className="relative">
+                  <img
+                    className="max-w-[240px] max-h-[240px] md:max-w-[348px] md:max-h-[348px] z-10"
+                    src={scene}
+                    alt="scene"
+                  />{" "}
+                  <div className="backlight absolute top-[5%] z-0"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <Footer />
