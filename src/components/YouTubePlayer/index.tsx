@@ -7,8 +7,8 @@ interface YouTubePlayerProps {
 
 const YouTubePlayer: React.FC<YouTubePlayerProps> = ({ videoId }) => {
   const [opts, setOpts] = useState({
-    height: "300vh",
-    width: "350vw",
+    height: "151px",
+    width: "343px",
     playerVars: {
       autoplay: 0,
     },
