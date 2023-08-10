@@ -51,6 +51,12 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.boldTextGradient {
+  background: linear-gradient(146deg, #6fe4c6 0%, #080c0d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .statisticBacklight {
   width: 638px;
   height: 133px;

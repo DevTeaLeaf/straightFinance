@@ -14,6 +14,7 @@ import scene from "./scene.png";
 import trust from "./trust.png";
 import usdt from "./usdt.png";
 import walletconnect from "./walletconnect.png";
+import bsc from "./bsc.png";
 
 export {
   arrowDown,
@@ -32,4 +33,5 @@ export {
   trust,
   usdt,
   walletconnect,
+  bsc,
 };

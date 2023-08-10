@@ -3,6 +3,8 @@ import { withTranslation } from "react-i18next";
 
 import { Header, Footer, YouTubePlayer } from "./components";
 
+import { PECULIARITIES } from "#constants";
+
 import {
   bgArrow,
   statisticBg,
@@ -17,6 +19,7 @@ import {
   scene,
   usdt,
   walletconnect,
+  bsc,
 } from "#assets/img";
 
 const App = ({ t }: { t: TFunction }) => {
@@ -313,6 +316,48 @@ const App = ({ t }: { t: TFunction }) => {
                   <div className="backlight absolute top-[5%] z-0"></div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="text-white mt-[200px] flex flex-col gap-[50px]">
+            <div className="flex flex-col items-center justify-center gap-[25px]">
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
+                {t("peculiarities")}
+              </h1>
+              <h3 className="text-[18px] font-light leading-[23px] max-w-[700px] text-center">
+                {t("peculiarities_description")}
+              </h3>
+            </div>
+            <div>
+              {PECULIARITIES.map((element, index) => {
+                return (
+                  <div className="flex flex-col gap-10 mb-[140px]" key={index}>
+                    <div className="relative">
+                      <div className="font-bold leading-[21px] md:leading-[51px] text-[20px] md:text-[48px] mb-4 flex gap-5">
+                        <p className="boldTextGradient">0{index + 1}.</p>{" "}
+                        <p>{t(element.header)}</p>
+                      </div>
+                      <div className="gradientLineBg w-[500px] h-[1px] ml-[-100px] hidden md:flex"></div>
+                    </div>
+                    <div className="flex gap-[90px]">
+                      {element.properties.map((e) => {
+                        return (
+                          <div
+                            className="max-w-[342px] rounded-[10px] border border-[#6FE4C6]"
+                            key={e}
+                          >
+                            <div className="flex flex-col items-start gap-4 py-[30px] px-5">
+                              <img src={bsc} alt="bsc" />
+                              <p className="text-[14px] font-light leading-[18.62px]">
+                                {t(e)}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
