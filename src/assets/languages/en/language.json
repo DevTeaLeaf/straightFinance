@@ -49,5 +49,10 @@
   "growing_value": "Growing value of SFinance",
   "growing_value_1": "SFinance is the token of the Straight Finance project, which allows its holders to receive a share of the project's profits",
   "growing_value_2": "The SFinance token has a limited supply, and we regularly burn some of the tokens, removing them from circulation. This approach increases the value of each token and increases the share of each holder.",
-  "growing_value_3": "Buying and holding NFT MASK from our collection will be a profitable investment even for those who do not plan to invest, as their value will grow along with the development of the Straight Finance project."
+  "growing_value_3": "Buying and holding NFT MASK from our collection will be a profitable investment even for those who do not plan to invest, as their value will grow along with the development of the Straight Finance project.",
+  "stacking_1": "You have the opportunity to stake SFinance tokens and receive a fixed percentage of 20% per annum (APR). At the same time, your tokens will not be blocked, and you can withdraw the principal amount of the deposit along with earned interest at any time.",
+  "stacking_2": "In addition, while your tokens are staked, you will receive a share of the project's profits depending on your stake in the token. This gives you the opportunity to receive additional income from your participation in the project.",
+  "input_tokens": "Enter the number of tokens",
+  "in_stacking": "Submit for staking",
+  "in_pools": "Left in the staking pool"
 }
