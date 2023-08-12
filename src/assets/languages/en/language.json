@@ -54,5 +54,6 @@
   "stacking_2": "In addition, while your tokens are staked, you will receive a share of the project's profits depending on your stake in the token. This gives you the opportunity to receive additional income from your participation in the project.",
   "input_tokens": "Enter the number of tokens",
   "in_stacking": "Submit for staking",
-  "in_pools": "Left in the staking pool"
+  "in_pools": "Left in the staking pool",
+  "sfinance_tokenomics": "Ownership of the SFinance token gives the right to receive a part of the profits of the Straight Finance project"
 }
