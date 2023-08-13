@@ -10,6 +10,21 @@ body {
   overflow-x: hidden;
   user-select: none;
 }
+input {
+  outline: none;
+}
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  color: red;
+}
+
+::-ms-input-placeholder {
+  color: red;
+}
 /* Fonts */
 .manrope {
   font-family: "Manrope", sans-serif;

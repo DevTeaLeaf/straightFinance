@@ -360,6 +360,22 @@ const App = ({ t }: { t: TFunction }) => {
               })}
             </div>
           </div>
+          <div className="text-white">
+            <div>
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold uppercase mb-3">
+                {t("stacking")}
+              </h1>
+              <div className="max-w-[670px] flex flex-col items-start gap-5">
+                <p className="text-[20px] leading-[30px]">{t("stacking_1")}</p>
+                <p className="text-[20px] leading-[30px]">{t("stacking_2")}</p>
+              </div>
+              <input
+                type="text"
+                className="border border-[#6FE4C6] bg-transparent py-4 px-6 rounded-[34px] min-w-[266px]"
+                placeholder={t("input_tokens")}
+              />
+            </div>
+          </div>
         </div>
         <Footer />
       </div>

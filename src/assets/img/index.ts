@@ -15,6 +15,7 @@ import trust from "./trust.png";
 import usdt from "./usdt.png";
 import walletconnect from "./walletconnect.png";
 import bsc from "./bsc.png";
+import stackingBg from "./stacking_bg.png";
 
 export {
   arrowDown,
@@ -34,4 +35,5 @@ export {
   usdt,
   walletconnect,
   bsc,
+  stackingBg,
 };
