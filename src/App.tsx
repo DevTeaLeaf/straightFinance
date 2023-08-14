@@ -369,11 +369,18 @@ const App = ({ t }: { t: TFunction }) => {
                 <p className="text-[20px] leading-[30px]">{t("stacking_1")}</p>
                 <p className="text-[20px] leading-[30px]">{t("stacking_2")}</p>
               </div>
-              <input
-                type="text"
-                className="border border-[#6FE4C6] bg-transparent py-4 px-6 rounded-[34px] min-w-[266px]"
-                placeholder={t("input_tokens")}
-              />
+              <div className="flex items-center gap-[15px] mt-[80px]">
+                <input
+                  type="text"
+                  className="border border-[#6FE4C6] bg-transparent py-4 px-6 rounded-[34px] min-w-[266px]"
+                  placeholder={t("input_tokens")}
+                />
+                <button className="bg-[#6FE4C6] rounded-[87px]">
+                  <p className="text-[#000] px-[60px] py-[15px] text-[14px] font-semibold leading-6">
+                    {t("in_stacking")}
+                  </p>
+                </button>
+              </div>
             </div>
           </div>
         </div>
