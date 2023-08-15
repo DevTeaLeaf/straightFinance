@@ -20,6 +20,7 @@ import {
   usdt,
   walletconnect,
   bsc,
+  stackingBg,
 } from "#assets/img";
 
 const App = ({ t }: { t: TFunction }) => {
@@ -360,7 +361,7 @@ const App = ({ t }: { t: TFunction }) => {
               })}
             </div>
           </div>
-          <div className="text-white">
+          <div className="text-white relative">
             <div>
               <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold uppercase mb-3">
                 {t("stacking")}
@@ -376,13 +377,22 @@ const App = ({ t }: { t: TFunction }) => {
                   placeholder={t("input_tokens")}
                 />
                 <button className="bg-[#6FE4C6] rounded-[87px]">
-                  <p className="text-[#000] px-[60px] py-[15px] text-[14px] font-semibold leading-6">
+                  <p className="text-[#000] px-[60px] py-[15px] text-[16px] font-semibold leading-6">
                     {t("in_stacking")}
                   </p>
                 </button>
               </div>
+              <p className="mt-8 ml-6 font-light text-[16px] leading-[17px]">
+                {t("in_pools")}: $23 000
+              </p>
             </div>
+            <img
+              className="absolute top-[-5%] z-[-1]"
+              src={stackingBg}
+              alt="Stacking background"
+            />
           </div>
+          <div className="mt-[160px]"></div>
         </div>
         <Footer />
       </div>
