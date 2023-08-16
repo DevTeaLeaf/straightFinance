@@ -382,7 +382,7 @@ const App = ({ t }: { t: TFunction }) => {
                   </p>
                 </button>
               </div>
-              <p className="mt-8 ml-6 font-light text-[16px] leading-[17px]">
+              <p className="mt-8 ml-6 font-light text-[16px] leading-[17.3px]">
                 {t("in_pools")}: $23 000
               </p>
             </div>
