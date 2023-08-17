@@ -392,7 +392,18 @@ const App = ({ t }: { t: TFunction }) => {
               alt="Stacking background"
             />
           </div>
-          <div className="mt-[160px]"></div>
+          <div className="mt-[160px] text-white ">
+            <div className="flex justify-center items-center flex-col gap-4">
+              {" "}
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-3">
+                SFINANCE
+              </h1>{" "}
+              <h3 className="font-light text-[18px] leading-6">
+                {t("sfinance_tokenomics")}
+              </h3>
+              <div className="gradientCenterLine"></div>
+            </div>{" "}
+          </div>
         </div>
         <Footer />
       </div>

@@ -90,6 +90,22 @@ input {
 .gradientLineBg {
   background: linear-gradient(to right, #6fe4c6 0%, rgba(14, 183, 140, 0) 100%);
 }
+.gradientCenterLine {
+  width: 600px;
+  height: 1px;
+  background: linear-gradient(
+        to bottom right,
+        #6fe4c6 0%,
+        rgba(14, 183, 140, 0) 50%
+      )
+      bottom right / 50% 50% no-repeat,
+    linear-gradient(to bottom left, #6fe4c6 0%, rgba(14, 183, 140, 0) 50%)
+      bottom left / 50% 50% no-repeat,
+    linear-gradient(to top left, #6fe4c6 0%, rgba(14, 183, 140, 0) 50%) top left /
+      50% 50% no-repeat,
+    linear-gradient(to top right, #6fe4c6 0%, rgba(14, 183, 140, 0) 50%) top
+      right / 50% 50% no-repeat;
+}
 .underlinedLink {
   position: relative;
   text-decoration: none;
