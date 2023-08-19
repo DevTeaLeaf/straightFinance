@@ -120,3 +120,9 @@ input {
   height: 1px;
   background-color: white;
 }
+.boxBg {
+  border-radius: 7px;
+  opacity: 0.2;
+  background: linear-gradient(180deg, #6fe4c6 0%, rgba(111, 228, 198, 0) 100%);
+  max-width: 387px;
+}

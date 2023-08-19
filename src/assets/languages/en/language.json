@@ -55,5 +55,8 @@
   "input_tokens": "Enter the number of tokens",
   "in_stacking": "Submit for staking",
   "in_pools": "Left in the staking pool",
-  "sfinance_tokenomics": "Ownership of the SFinance token gives the right to receive a part of the profits of the Straight Finance project"
+  "sfinance_tokenomics": "Ownership of the SFinance token gives the right to receive a part of the profits of the Straight Finance project",
+  "buy_tokens": "Buy SFinance tokens",
+  "min_tokens": "Minimum purchase amount",
+  "total_sold_out": "Total tokens sold"
 }

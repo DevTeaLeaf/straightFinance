@@ -392,7 +392,7 @@ const App = ({ t }: { t: TFunction }) => {
               alt="Stacking background"
             />
           </div>
-          <div className="mt-[160px] text-white ">
+          <div className="mt-[160px] text-white">
             <div className="flex justify-center items-center flex-col gap-4">
               {" "}
               <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-3">
@@ -403,6 +403,20 @@ const App = ({ t }: { t: TFunction }) => {
               </h3>
               <div className="gradientCenterLine"></div>
             </div>{" "}
+          </div>
+          <div className="mt-[160px] text-white">
+            <h3 className="text-[#6FE4C6] font-extrabold text-[32px] leading-9 text-center mb-6">
+              {t("buy_tokens")}
+            </h3>
+            <div>
+              <p className="text-[16px] font-bold leading-[17px]">
+                1 SFinance = 0.0025 USDT
+              </p>
+
+              <div className="text-[#6FE4C6] text-[16px] font-bold leading-[22px] py-[25px] px-3 text-center boxBg">
+                {t("min_tokens")} - 1 USDT
+              </div>
+            </div>
           </div>
         </div>
         <Footer />
