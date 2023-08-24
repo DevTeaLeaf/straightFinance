@@ -414,7 +414,7 @@ const App = ({ t }: { t: TFunction }) => {
               </p>
 
               <div className="text-[#6FE4C6] text-[16px] font-bold leading-[22px] py-[25px] px-3 text-center boxBg">
-                {t("min_tokens")} - 1 USDT
+                {t("min_tokens")} - 10 USDT
               </div>
             </div>
           </div>
