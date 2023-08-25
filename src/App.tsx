@@ -408,13 +408,21 @@ const App = ({ t }: { t: TFunction }) => {
             <h3 className="text-[#6FE4C6] font-extrabold text-[32px] leading-9 text-center mb-6">
               {t("buy_tokens")}
             </h3>
-            <div>
+            <div className="flex flex-col items-center gap-[30px] py-[38px] px-auto border border-[#6FE4C6] rounded-[39px]">
               <p className="text-[16px] font-bold leading-[17px]">
                 1 SFinance = 0.0025 USDT
               </p>
-
               <div className="text-[#6FE4C6] text-[16px] font-bold leading-[22px] py-[25px] px-3 text-center boxBg">
-                {t("min_tokens")} - 10 USDT
+                {t("min_tokens")} - 1 USDT
+              </div>
+
+              <div className="max-w-[387px] w-full relative">
+                <div className="w-[40%] h-[13px] bg-[#6FE4C6] rounded-[21px]"></div>
+                <div className="w-full h-[13px] bg-white rounded-[21px] absolute top-0 z-[-1]"></div>
+              </div>
+              <div className="flex gap-2 font-bold leading-5 text-[16px]">
+                <p>{t("total_sold_out")}: $23000 / </p>
+                <p className="text-[#0EB78C]">$50000</p>
               </div>
             </div>
           </div>
