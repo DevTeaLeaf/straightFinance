@@ -55,6 +55,9 @@ input {
   width: 431px;
   height: 305px;
 }
+.lightText {
+  text-shadow: 0px 0px 5px #6fe4c6;
+}
 .textGradient {
   background: linear-gradient(
     90deg,
@@ -92,7 +95,7 @@ input {
 }
 .gradientCenterLine {
   width: 600px;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
         to bottom right,
         #6fe4c6 0%,

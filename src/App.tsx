@@ -21,6 +21,9 @@ import {
   walletconnect,
   bsc,
   stackingBg,
+  card,
+  twoCards,
+  donut,
 } from "#assets/img";
 
 const App = ({ t }: { t: TFunction }) => {
@@ -403,6 +406,32 @@ const App = ({ t }: { t: TFunction }) => {
               </h3>
               <div className="gradientCenterLine"></div>
             </div>{" "}
+            <div className="flex items-center justify-between mt-[85px] mb-[116px]">
+              <div className="relative max-w-[506px]">
+                <img className="w-full" src={donut} alt="donut" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <h3 className="lightText font-bold text-[40px] leading-[45.4px] text-center">
+                    {t("capitalization")}
+                  </h3>
+                  <p className="text-[16px] leading-5 font-medium lightText text-center mt-[14px]">
+                    {t("released")}
+                  </p>
+                </div>
+              </div>
+
+              <div className="relative max-w-[506px]">
+                <img className="w-full" src={donut} alt="donut" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <h3 className="lightText font-bold text-[40px] leading-[45.4px] text-center">
+                    {t("capitalization")}
+                  </h3>
+                  <p className="text-[16px] leading-5 font-medium lightText text-center mt-[14px]">
+                    {t("on")} 20.07.23
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div></div>
           </div>
           <div className="mt-[160px] text-white">
             <h3 className="text-[#6FE4C6] font-extrabold text-[32px] leading-9 text-center mb-6">
@@ -424,6 +453,30 @@ const App = ({ t }: { t: TFunction }) => {
                 <p>{t("total_sold_out")}: $23000 / </p>
                 <p className="text-[#0EB78C]">$50000</p>
               </div>
+            </div>
+          </div>
+          <div className="mt-[200px] flex justify-between items-center">
+            <div>
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-6">
+                {t("nft_sell")}
+              </h1>{" "}
+              <div className="text-white leading-[29.1px] text-[20px] flex flex-start flex-col gap-10 max-w-[670px]">
+                <p>{t("nft_sell_1")}</p>
+                <p>{t("nft_sell_2")}</p>
+              </div>
+              <button className="bg-[#6FE4C6] rounded-[87px] mt-[64px]">
+                <p className="text-[#000] px-[60px] py-[15px] text-[16px] font-semibold leading-6">
+                  {t("buy_nft")}
+                </p>
+              </button>
+            </div>
+            <div className="flex relative">
+              <img src={twoCards} alt="twoCards" />
+              <img
+                src={card}
+                alt="card"
+                className="absolute bottom-0 left-[75%] z-[-1]"
+              />
             </div>
           </div>
         </div>

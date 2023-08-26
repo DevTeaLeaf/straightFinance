@@ -58,5 +58,12 @@
   "sfinance_tokenomics": "Ownership of the SFinance token gives the right to receive a part of the profits of the Straight Finance project",
   "buy_tokens": "Buy SFinance tokens",
   "min_tokens": "Minimum purchase amount",
-  "total_sold_out": "Total tokens sold"
+  "total_sold_out": "Total tokens sold",
+  "nft_sell": "Sales of NFT",
+  "nft_sell_1": "We offer you the opportunity to increase the return on your investment by purchasing our NFTs, which guarantee an additional percentage of earnings.",
+  "nft_sell_2": "Even if you are not interested in investing in our project, buying NFTs will still be a good investment, because with the growing popularity of Straight Finance, their value will increase due to their real application.",
+  "buy_nft": "Buy NFT",
+  "capitalization": "1 trillion tokens",
+  "released": "Was released",
+  "on": "on"
 }
