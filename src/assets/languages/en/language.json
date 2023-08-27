@@ -65,5 +65,21 @@
   "buy_nft": "Buy NFT",
   "capitalization": "1 trillion tokens",
   "released": "Was released",
-  "on": "on"
+  "on": "on",
+  "public_sale": "Public sale",
+  "liquidity": "Liquidity",
+  "team": "Team",
+  "marketing": "Marketing",
+  "question_1": "What is Straight Finance?",
+  "question_2": "How does Straight Finance make money?",
+  "question_3": "Straight Finance - is safe?",
+  "question_4": "Why is it better for me to use Straight Finance instead of trading myself?",
+  "question_5": "I don't want to invest USDT, but I want to make money with Straight Finance. What can I do?",
+  "question_6": "I still have questions, where can I ask them?",
+  "answer_1": "Straight Finance is a structured product that allows users to earn high returns even if they are not familiar with cryptocurrencies",
+  "answer_2": "Straight Finance uses various sources of income. For example, we use official spot trading bots from Binance or liquidity supply in unsiwap v3. It is important to understand that we do not use dangerous instruments such as futures or options. Your funds are safe!",
+  "answer_3": "Yes, it's more than safe. We do not use instruments where funds can be liquidated, such as futures or margined options. We do not use leverage or other tools to increase our positions, as this could involve the risk of liquidation of users' funds. Therefore, we mainly use spot trading",
+  "answer_4": "Our project invites you to invest with a return of 10% (and even more if you have NFT). One investment cycle usually takes 1-2 months, providing an average of 5%-10% monthly increase to the initial deposit without unnecessary risks. While independent trading will require you to: - Analyze the state of the market - Follow the latest news - Risk with your own funds in significant amounts to achieve the same 5% -10% monthly yield. In Straight Finance, you can invest your USDT and go about your business in peace, and then take the profits. In addition, many investors are not limited to one-time investments. They reinvest their profits. The following happens: Users invest in common capital -> Capital grows -> Capital gain increases -> Daily profit increases and turnover becomes more dynamic -> More users receive their payouts and reinvest again.",
+  "answer_5": "There are several ways where you can earn good money: - Referral program. You can invite your friends and earn 10% of each friend's investment. In this case, the friend does not lose anything. For example: I invited a friend who is investing 1000 USDT. I get 100 USDT to my account instantly, and a friend joins the queue of investors and after that he will receive 1100 USDT (+10%) - SFinance utility token. Every day we distribute all profits among SFinance holders. You can buy an SFinance token and receive a share of the profits. Moreover, the SFinance token is deflationary. Simply put, over time it becomes less and less, so its price is growing! -Utility NFT. You can buy NFTs from our collection and hold them for later resale. Each NFT increases the return on investment (from 1% to 100%), while the effects of different NFTs add up! The number of NFTs is also limited, so their value is growing",
+  "answer_6": "We will always be happy to answer your questions in our telegram group"
 }

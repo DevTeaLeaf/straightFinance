@@ -19,6 +19,7 @@ import stackingBg from "./stackingBg.png";
 import twoCards from "./twoCards.png";
 import card from "./card.png";
 import donut from "./donut.png";
+import plus from "./plus.png";
 
 export {
   arrowDown,
@@ -42,4 +43,5 @@ export {
   card,
   twoCards,
   donut,
+  plus,
 };

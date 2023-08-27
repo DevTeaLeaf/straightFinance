@@ -133,3 +133,10 @@ input {
   max-width: 387px;
   width: 100%;
 }
+.faqBorder {
+  border-top: 2.5px rgba(137, 137, 137, 0.25) solid;
+  border-bottom: 2.5px rgba(137, 137, 137, 0.25) solid;
+}
+.faqTransition {
+  transition: 0.5s ease;
+}

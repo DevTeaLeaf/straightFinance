@@ -1,9 +1,9 @@
 import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
-import { Header, Footer, YouTubePlayer } from "./components";
+import { Header, Footer, YouTubePlayer, FAQ } from "./components";
 
-import { PECULIARITIES } from "#constants";
+import { PECULIARITIES, CATEGORIES } from "#constants";
 
 import {
   bgArrow,
@@ -431,7 +431,22 @@ const App = ({ t }: { t: TFunction }) => {
                 </div>
               </div>
             </div>
-            <div></div>
+            <div className="flex items-center justify-between">
+              {CATEGORIES.map(({ name, color }) => (
+                <div key={name} className="flex items-center gap-5">
+                  <div
+                    className="rounded-full w-[30px] h-[30px]"
+                    style={{
+                      filter: `drop-shadow(0px 0px 8px ${color})`,
+                      backgroundColor: color,
+                    }}
+                  ></div>
+                  <p className="text-[20px] font-bold leading-[26px] uppercase">
+                    {t(name)}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="mt-[160px] text-white">
             <h3 className="text-[#6FE4C6] font-extrabold text-[32px] leading-9 text-center mb-6">
@@ -478,6 +493,12 @@ const App = ({ t }: { t: TFunction }) => {
                 className="absolute bottom-0 left-[75%] z-[-1]"
               />
             </div>
+          </div>
+          <div className="mt-[160px]">
+            <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-6 text-center">
+              FAQ
+            </h1>{" "}
+            <FAQ />
           </div>
         </div>
         <Footer />
