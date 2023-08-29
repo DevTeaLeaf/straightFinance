@@ -32,7 +32,16 @@ const Item = ({ question, answer, isOpen, toggleOpen, t }: ItemProps) => {
         </div>
         {isOpen && (
           <div className=" text-[16px] mt-5 leading-[21.6px] text-white opacity-[0.85] pl-5">
-            {t(answer)}
+            {t(answer)}{" "}
+            {answer == "answer_6" ? (
+              <a
+                href="https://t.me/straight_finance"
+                target="_blank"
+                className="underlinedLink"
+              >
+                @straight_finance
+              </a>
+            ) : null}
           </div>
         )}
       </div>

@@ -6,7 +6,7 @@ import { Header, Footer, YouTubePlayer, FAQ } from "./components";
 import { PECULIARITIES, CATEGORIES } from "#constants";
 
 import {
-  bgArrow,
+  leftBgArrow,
   statisticBg,
   net,
   twitter,
@@ -24,6 +24,8 @@ import {
   card,
   twoCards,
   donut,
+  arrow,
+  rightBgArrow,
 } from "#assets/img";
 
 const App = ({ t }: { t: TFunction }) => {
@@ -38,11 +40,11 @@ const App = ({ t }: { t: TFunction }) => {
           >
             <div className="minBacklight absolute top-[10%] md:hidden"></div>
             <div className="absolute left-[-5%] top-[0] z-0 md:block hidden">
-              <img src={bgArrow} alt="bgArrow" />
+              <img src={leftBgArrow} alt="bgArrow" />
               <div className="backlight absolute top-[35%] left-[5%]"></div>
             </div>
-            <div className="absolute right-[-3%] top-[-12%] z-0 md:block hidden">
-              <img src={bgArrow} alt="bgArrow" className="rotate-[180deg]" />
+            <div className="absolute right-[-3%] top-[0] z-0 md:block hidden">
+              <img src={rightBgArrow} alt="bgArrow" />
               <div className="backlight absolute top-[40%] right-[5%]"></div>
             </div>
             <h1 className="text-[#6FE4C6] text-center text-[24px] md:text-[48px] font-bold leading-[30px] md:leading-[58px] max-w-[300px] md:max-w-[750px]">
@@ -334,7 +336,10 @@ const App = ({ t }: { t: TFunction }) => {
             <div>
               {PECULIARITIES.map((element, index) => {
                 return (
-                  <div className="flex flex-col gap-10 mb-[140px]" key={index}>
+                  <div
+                    className="flex flex-col gap-5 md:gap-10 mb-10 md:mb-[140px]"
+                    key={index}
+                  >
                     <div className="relative">
                       <div className="font-bold leading-[21px] md:leading-[51px] text-[20px] md:text-[48px] mb-4 flex gap-5">
                         <p className="boldTextGradient">0{index + 1}.</p>{" "}
@@ -342,14 +347,14 @@ const App = ({ t }: { t: TFunction }) => {
                       </div>
                       <div className="gradientLineBg w-[500px] h-[1px] ml-[-100px] hidden md:flex"></div>
                     </div>
-                    <div className="flex gap-[90px]">
+                    <div className="flex gap-[45px] md:gap-[90px] flex-wrap items-center justify-center">
                       {element.properties.map((e) => {
                         return (
                           <div
                             className="max-w-[342px] rounded-[10px] border border-[#6FE4C6]"
                             key={e}
                           >
-                            <div className="flex flex-col items-start gap-4 py-[30px] px-5">
+                            <div className="flex flex-col items-start gap-4 py-[16px] md:py-[30px] px-6 md:px-5 w-[324px] h-[176px] md:w-[342px] md:h-[215px]">
                               <img src={bsc} alt="bsc" />
                               <p className="text-[14px] font-light leading-[18.62px]">
                                 {t(e)}
@@ -401,37 +406,37 @@ const App = ({ t }: { t: TFunction }) => {
               <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-3">
                 SFINANCE
               </h1>{" "}
-              <h3 className="font-light text-[18px] leading-6">
+              <h3 className="font-light text-[18px] leading-6 text-center">
                 {t("sfinance_tokenomics")}
               </h3>
               <div className="gradientCenterLine"></div>
             </div>{" "}
-            <div className="flex items-center justify-between mt-[85px] mb-[116px]">
-              <div className="relative max-w-[506px]">
+            <div className="flex items-center justify-center lg:justify-between mt-[85px] mb-[116px] flex-col md:flex-row flex-wrap lg:flex-nowrap">
+              <div className="relative max-w-[222px] md:max-w-[506px]">
                 <img className="w-full" src={donut} alt="donut" />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <h3 className="lightText font-bold text-[40px] leading-[45.4px] text-center">
+                  <h3 className="lightText font-bold text-[24px] md:text-[40px] leading-7 md:leading-[45.4px] text-center">
                     {t("capitalization")}
                   </h3>
-                  <p className="text-[16px] leading-5 font-medium lightText text-center mt-[14px]">
+                  <p className="text-[12px] md:text-[16px] leading-[12.6px] md:leading-5 font-medium lightText text-center mt-[14px]">
                     {t("released")}
                   </p>
                 </div>
               </div>
 
-              <div className="relative max-w-[506px]">
+              <div className="relative max-w-[222px] md:max-w-[506px] mt-[90px] md:mt-0">
                 <img className="w-full" src={donut} alt="donut" />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <h3 className="lightText font-bold text-[40px] leading-[45.4px] text-center">
+                  <h3 className="lightText font-bold text-[24px] md:text-[40px] leading-7 md:leading-[45.4px] text-center">
                     {t("capitalization")}
                   </h3>
-                  <p className="text-[16px] leading-5 font-medium lightText text-center mt-[14px]">
+                  <p className="text-[12px] md:text-[16px] leading-[12.6px] md:leading-5 font-medium lightText text-center mt-[14px]">
                     {t("on")} 20.07.23
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-wrap">
               {CATEGORIES.map(({ name, color }) => (
                 <div key={name} className="flex items-center gap-5">
                   <div
@@ -470,35 +475,47 @@ const App = ({ t }: { t: TFunction }) => {
               </div>
             </div>
           </div>
-          <div className="mt-[200px] flex justify-between items-center">
+          <div className="mt-[100px] md:mt-[200px] flex flex-col md:flex-row justify-center md:justify-between items-center md:text-left text-center">
             <div>
-              <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-6">
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-[16px] md:mb-6">
                 {t("nft_sell")}
               </h1>{" "}
-              <div className="text-white leading-[29.1px] text-[20px] flex flex-start flex-col gap-10 max-w-[670px]">
+              <div className="text-white leading-[18px] md:leading-[29.1px] text-[14px] md:text-[20px] flex flex-start flex-col gap-10 max-w-[670px]">
                 <p>{t("nft_sell_1")}</p>
                 <p>{t("nft_sell_2")}</p>
               </div>
-              <button className="bg-[#6FE4C6] rounded-[87px] mt-[64px]">
+              <button className="bg-[#6FE4C6] rounded-[87px] mt-[64px] md:block hidden">
                 <p className="text-[#000] px-[60px] py-[15px] text-[16px] font-semibold leading-6">
                   {t("buy_nft")}
                 </p>
               </button>
             </div>
-            <div className="flex relative">
+            <div className="flex relative mt-[55px] md:mt-0">
               <img src={twoCards} alt="twoCards" />
               <img
                 src={card}
                 alt="card"
-                className="absolute bottom-0 left-[75%] z-[-1]"
+                className="absolute bottom-0 left-[75%] z-[-1] hidden lg:block"
               />
             </div>
+            <button className="bg-[#6FE4C6] rounded-[87px] mt-[64px] md:hidden block">
+              <p className="text-[#000] px-[134px] py-[15px] text-[16px] font-semibold leading-6">
+                {t("buy_nft")}
+              </p>
+            </button>
           </div>
-          <div className="mt-[160px]">
+          <div className="mt-[96px] md:mt-[160px]">
             <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-6 text-center">
               FAQ
             </h1>{" "}
             <FAQ />
+          </div>
+          <div className="mt-[60px] flex items-center justify-center cursor-pointer">
+            <img
+              className="py-[15px] px-4 rounded-[5px] bg-[#1C2833]"
+              src={arrow}
+              alt="arrow"
+            />
           </div>
         </div>
         <Footer />
