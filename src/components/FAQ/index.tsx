@@ -58,7 +58,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center mx-auto gap-[1rem] max-w-[800px]">
+    <div className="flex flex-col items-center justify-center mx-auto gap-[1rem] max-w-[800px] px-[15px] md:px-auto">
       {FAQ_DATA.map((item, index) => (
         <Item
           key={index}

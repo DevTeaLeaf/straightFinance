@@ -31,7 +31,7 @@ import {
 const App = ({ t }: { t: TFunction }) => {
   return (
     <>
-      <div className="flex flex-col min-h-[100vh] gap-[100px]">
+      <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px]">
         <Header />
         <div className="grow max-w-[1440px] manrope mx-auto z-0">
           <div
@@ -53,7 +53,7 @@ const App = ({ t }: { t: TFunction }) => {
             <h3 className="text-white text-[14px] md:text-[18px] leading-[17.5px] md:leading-6 font-light max-w-[360px] md:max-w-[645px] text-center">
               {t("main_h3")}
             </h3>
-            <div className="flex items-center flex-col md:flex-row gap-5 mb-[100px]">
+            <div className="flex items-center flex-col md:flex-row gap-5 mb-[60px] md:mb-[100px]">
               <button className="bg-[#6FE4C6] rounded-[87px] ml-[10px]">
                 <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
                   {t("how_it_works")}
@@ -141,7 +141,7 @@ const App = ({ t }: { t: TFunction }) => {
               </div>
             </div>
           </div>
-          <div className="mt-[200px] flex flex-col items-center gap-[60px]">
+          <div className="mt-[70px] md:mt-[200px] flex flex-col items-center gap-[60px]">
             <div className="absolute mt-[-70px] z-0">
               <img src={statisticBg} alt="statisticBg" />
               <div className="statisticBacklight absolute top-[30%] right-[30%]"></div>
@@ -196,13 +196,15 @@ const App = ({ t }: { t: TFunction }) => {
                 </p>
               </div>
             </div>
-            <button className="bg-[#6FE4C6] rounded-[87px]">
-              <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
-                {t("claim")}
-              </p>
-            </button>
+            {false && (
+              <button className="bg-[#6FE4C6] rounded-[87px]">
+                <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
+                  {t("claim")}
+                </p>
+              </button>
+            )}
           </div>
-          <div className="mt-[144px] flex flex-col items-center gap-10">
+          <div className="mt-[90px] md:mt-[144px] flex flex-col items-center gap-10">
             <div className="flex flex-col items-center gap-4">
               <div className="flex gap-3 text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
                 <h3 className="text-white">{t("earnings")}</h3>
@@ -324,16 +326,16 @@ const App = ({ t }: { t: TFunction }) => {
               </div>
             </div>
           </div>
-          <div className="text-white mt-[200px] flex flex-col gap-[50px]">
+          <div className="text-white mt-[50px] md:mt-[200px] flex flex-col gap-[50px]">
             <div className="flex flex-col items-center justify-center gap-[25px]">
               <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
                 {t("peculiarities")}
               </h1>
-              <h3 className="text-[18px] font-light leading-[23px] max-w-[700px] text-center">
+              <h3 className="text-[14px] md:text-[18px] font-light leading-[18.2px] md:leading-[23px] max-w-[700px] text-center px-[15px]">
                 {t("peculiarities_description")}
               </h3>
             </div>
-            <div>
+            <div className="">
               {PECULIARITIES.map((element, index) => {
                 return (
                   <div
@@ -371,47 +373,51 @@ const App = ({ t }: { t: TFunction }) => {
           </div>
           <div className="text-white relative">
             <div>
-              <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold uppercase mb-3">
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold uppercase mb-3 text-center md:text-left">
                 {t("stacking")}
               </h1>
-              <div className="max-w-[670px] flex flex-col items-start gap-5">
-                <p className="text-[20px] leading-[30px]">{t("stacking_1")}</p>
-                <p className="text-[20px] leading-[30px]">{t("stacking_2")}</p>
+              <div className="max-w-[670px] flex flex-col items-center text-center md:text-left md:items-start gap-5 px-[15px] md:px-0">
+                <p className="text-[14px] leading-[18.2px] md:text-[20px] md:leading-[30px]">
+                  {t("stacking_1")}
+                </p>
+                <p className="text-[14px] leading-[18.2px] md:text-[20px] md:leading-[30px]">
+                  {t("stacking_2")}
+                </p>
               </div>
-              <div className="flex items-center gap-[15px] mt-[80px]">
+              <div className="flex items-center gap-1 md:gap-[15px] mt-[10px] md:mt-[80px] justify-center md:justify-start">
                 <input
                   type="text"
-                  className="border border-[#6FE4C6] bg-transparent py-4 px-6 rounded-[34px] min-w-[266px]"
+                  className="border border-[#6FE4C6] bg-transparent py-2 md:py-4 px-6 rounded-[34px] md:min-w-[266px] max-w-[195px]"
                   placeholder={t("input_tokens")}
                 />
                 <button className="bg-[#6FE4C6] rounded-[87px]">
-                  <p className="text-[#000] px-[60px] py-[15px] text-[16px] font-semibold leading-6">
+                  <p className="text-[#000] md:px-[60px] py-2 md:py-[15px] text-[12px] md:text-[16px] font-semibold leading-6 w-[146px] md:w-auto">
                     {t("in_stacking")}
                   </p>
                 </button>
               </div>
-              <p className="mt-8 ml-6 font-light text-[16px] leading-[17.3px]">
+              <p className="mt-8 ml-6 font-light text-[16px] leading-[17.3px] text-center md:text-left">
                 {t("in_pools")}: $23 000
               </p>
             </div>
             <img
-              className="absolute top-[-5%] z-[-1]"
+              className="md:absolute md:top-[-5%] md:z-[-1]"
               src={stackingBg}
               alt="Stacking background"
             />
           </div>
-          <div className="mt-[160px] text-white">
-            <div className="flex justify-center items-center flex-col gap-4">
+          <div className="mt-10 md:mt-[160px] text-white">
+            <div className="flex justify-center items-center flex-col gap-2 md:gap-4">
               {" "}
-              <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-3">
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase">
                 SFINANCE
               </h1>{" "}
-              <h3 className="font-light text-[18px] leading-6 text-center">
+              <h3 className="font-light text-[14px] md:text-[18px] leading-[18.2px] md:leading-6 text-center max-w-[350px] md:max-w-none">
                 {t("sfinance_tokenomics")}
               </h3>
               <div className="gradientCenterLine"></div>
             </div>{" "}
-            <div className="flex items-center justify-center lg:justify-between mt-[85px] mb-[116px] flex-col md:flex-row flex-wrap lg:flex-nowrap">
+            <div className="flex items-center justify-center lg:justify-between mt-[85px] mb-[100px] md:mb-[116px] flex-col md:flex-row flex-wrap lg:flex-nowrap">
               <div className="relative max-w-[222px] md:max-w-[506px]">
                 <img className="w-full" src={donut} alt="donut" />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -436,7 +442,7 @@ const App = ({ t }: { t: TFunction }) => {
                 </div>
               </div>
             </div>
-            <div className="flex items-center justify-between flex-wrap">
+            <div className="flex items-center justify-between flex-wrap gap-[30px] px-[15px]">
               {CATEGORIES.map(({ name, color }) => (
                 <div key={name} className="flex items-center gap-5">
                   <div
@@ -453,11 +459,11 @@ const App = ({ t }: { t: TFunction }) => {
               ))}
             </div>
           </div>
-          <div className="mt-[160px] text-white">
-            <h3 className="text-[#6FE4C6] font-extrabold text-[32px] leading-9 text-center mb-6">
+          <div className="mt-[85px] md:mt-[160px] text-white">
+            <h3 className="text-[#6FE4C6] font-extrabold leading-[26px] text-[24px] md:text-[32px] md:leading-9 text-center mb-6">
               {t("buy_tokens")}
             </h3>
-            <div className="flex flex-col items-center gap-[30px] py-[38px] px-auto border border-[#6FE4C6] rounded-[39px]">
+            <div className="flex flex-col items-center gap-[30px] py-[38px] px-[15px] md:px-auto md:border md:border-[#6FE4C6] md:rounded-[39px]">
               <p className="text-[16px] font-bold leading-[17px]">
                 1 SFinance = 0.0025 USDT
               </p>
@@ -465,7 +471,7 @@ const App = ({ t }: { t: TFunction }) => {
                 {t("min_tokens")} - 1 USDT
               </div>
 
-              <div className="max-w-[387px] w-full relative">
+              <div className="max-w-[300px] md:max-w-[387px] w-full relative">
                 <div className="w-[40%] h-[13px] bg-[#6FE4C6] rounded-[21px]"></div>
                 <div className="w-full h-[13px] bg-white rounded-[21px] absolute top-0 z-[-1]"></div>
               </div>
@@ -509,8 +515,8 @@ const App = ({ t }: { t: TFunction }) => {
               FAQ
             </h1>{" "}
             <FAQ />
-            <div className="backlight absolute top-[30%] left-[-20%]"></div>
-            <div className="backlight absolute top-[30%] right-[-20%]"></div>
+            <div className="backlight absolute top-[30%] left-[-20%] hidden md:block"></div>
+            <div className="backlight absolute top-[30%] right-[-20%] hidden md:block"></div>
           </div>
           <div className="mt-[60px] flex items-center justify-center cursor-pointer">
             <img

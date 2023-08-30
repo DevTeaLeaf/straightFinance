@@ -140,3 +140,8 @@ input {
 .faqTransition {
   transition: 0.5s ease;
 }
+@media screen and (max-width: 767px) {
+  .gradientCenterLine {
+    max-width: 300px;
+  }
+}

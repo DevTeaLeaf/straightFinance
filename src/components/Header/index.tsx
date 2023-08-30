@@ -25,28 +25,31 @@ const Header = ({ t }: { t: TFunction }) => {
             <p className="cursor-pointer">{t("token_and_nft")}</p>
             <p className="cursor-pointer">FAQ</p>
           </div>
-
-          <button
-            className="walletButton"
-            // onClick={open}
-          >
-            <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px] ">
-              <img src={wallet} alt="wallet" />
-              <p className="text-[12px] md:text-[14px] font-semibold leading-6 whitespace-nowrap">
-                {/* {account.address
+          {true ? (
+            <button
+              className="walletButton"
+              // onClick={open}
+            >
+              <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px] ">
+                <img src={wallet} alt="wallet" />
+                <p className="text-[12px] md:text-[14px] font-semibold leading-6 whitespace-nowrap">
+                  {/* {account.address
                 ? account.address.slice(0, 4) +
                   "..." +
                   account.address.slice(-4)
                 : "Connect Wallet"} */}
-                {t("connect_wallet")}
+                  {t("short_connect_wallet")}
+                </p>
+              </div>
+            </button>
+          ) : (
+            <button className="bg-[#6FE4C6] rounded-[87px] ml-[10px] xl:flex hidden">
+              <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
+                {t("claim")}
               </p>
-            </div>
-          </button>
-          <button className="bg-[#6FE4C6] rounded-[87px] ml-[10px] xl:flex hidden">
-            <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
-              {t("claim")}
-            </p>
-          </button>
+            </button>
+          )}
+
           <div className="ml-2 md:ml-6 xl:block hidden">
             <div
               onClick={
@@ -115,28 +118,31 @@ const Header = ({ t }: { t: TFunction }) => {
                   <p className="cursor-pointer">{t("ref_system")}</p>
                   <p className="cursor-pointer">{t("token_and_nft")}</p>
                   <p className="cursor-pointer">FAQ</p>
-
-                  <button className="bg-[#6FE4C6] rounded-[87px]">
-                    <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
-                      {t("claim")}
-                    </p>
-                  </button>
-                  <button
-                    className="walletButton"
-                    // onClick={open}
-                  >
-                    <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px]">
-                      <img src={wallet} alt="wallet" />
-                      <p className="text-[12px] md:text-[14px] font-semibold leading-6">
-                        {/* {account.address
+                  {true ? (
+                    <button
+                      className="walletButton"
+                      // onClick={open}
+                    >
+                      <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px]">
+                        <img src={wallet} alt="wallet" />
+                        <p className="text-[12px] md:text-[14px] font-semibold leading-6">
+                          {/* {account.address
                 ? account.address.slice(0, 4) +
                   "..." +
                   account.address.slice(-4)
                 : "Connect Wallet"} */}
-                        {t("connect_wallet")}
+                          {t("connect_wallet")}
+                        </p>
+                      </div>
+                    </button>
+                  ) : (
+                    <button className="bg-[#6FE4C6] rounded-[87px]">
+                      <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
+                        {t("claim")}
                       </p>
-                    </div>
-                  </button>
+                    </button>
+                  )}
+
                   <div>
                     <div
                       onClick={
