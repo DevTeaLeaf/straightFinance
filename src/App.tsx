@@ -504,11 +504,13 @@ const App = ({ t }: { t: TFunction }) => {
               </p>
             </button>
           </div>
-          <div className="mt-[96px] md:mt-[160px]">
+          <div className="mt-[96px] md:mt-[160px] relative">
             <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-6 text-center">
               FAQ
             </h1>{" "}
             <FAQ />
+            <div className="backlight absolute top-[30%] left-[-20%]"></div>
+            <div className="backlight absolute top-[30%] right-[-20%]"></div>
           </div>
           <div className="mt-[60px] flex items-center justify-center cursor-pointer">
             <img
