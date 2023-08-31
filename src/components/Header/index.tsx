@@ -4,7 +4,7 @@ import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
 import { useWeb3Modal } from "@web3modal/react";
-import { useAccount, useSigner, useNetwork, useSwitchNetwork } from "wagmi";
+import { useAccount, useNetwork, useSwitchNetwork } from "wagmi"; //import useSigner
 
 import i18n from "#translate/i18n";
 import "./header.css";
@@ -29,14 +29,13 @@ const Header: React.FC<HeaderProps> = ({ t, scrollToElement, refs }) => {
   const [modalActive, setModalActive] = useState(false);
 
   const { address } = useAccount();
-  const { data } = useSigner();
   const { open } = useWeb3Modal();
+  //const { data } = useSigner();
+  // data === signer
+  // data.provider === provider
 
   const { chain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();
-
-  // data === signer
-  // data.provider === provider
   const closeNavAndScroll = (ref: React.RefObject<HTMLElement>) => {
     setIsNavOpen(false);
     scrollToElement(ref);
