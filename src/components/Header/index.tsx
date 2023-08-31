@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-import i18n from "#translate/i18n";
+
 import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
+import { useWeb3Modal } from "@web3modal/react";
+import { useAccount, useSigner, useNetwork, useSwitchNetwork } from "wagmi";
+
+import i18n from "#translate/i18n";
 import "./header.css";
 
 import LanguagesModal from "../LanguagesModal";
@@ -24,6 +28,20 @@ const Header: React.FC<HeaderProps> = ({ t, scrollToElement, refs }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
 
+  const { address } = useAccount();
+  const { data } = useSigner();
+  const { open } = useWeb3Modal();
+
+  const { chain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
+
+  // data === signer
+  // data.provider === provider
+  const closeNavAndScroll = (ref: React.RefObject<HTMLElement>) => {
+    setIsNavOpen(false);
+    scrollToElement(ref);
+  };
+
   useEffect(() => {
     if (isNavOpen) {
       document.body.style.overflow = "hidden";
@@ -32,11 +50,11 @@ const Header: React.FC<HeaderProps> = ({ t, scrollToElement, refs }) => {
       document.body.style.overflowX = "hidden";
     }
   }, [isNavOpen]);
-
-  const closeNavAndScroll = (ref: React.RefObject<HTMLElement>) => {
-    setIsNavOpen(false);
-    scrollToElement(ref);
-  };
+  useEffect(() => {
+    if (chain?.id != 56) {
+      switchNetwork?.(56);
+    }
+  }, [chain]);
 
   return (
     <header className="w-full text-[#fff] manrope z-10">
@@ -78,19 +96,13 @@ const Header: React.FC<HeaderProps> = ({ t, scrollToElement, refs }) => {
             </p>
           </div>
           {true ? (
-            <button
-              className="walletButton"
-              // onClick={open}
-            >
+            <button className="walletButton" onClick={() => open()}>
               <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px] ">
                 <img src={wallet} alt="wallet" />
                 <p className="text-[12px] md:text-[14px] font-semibold leading-6 whitespace-nowrap">
-                  {/* {account.address
-                ? account.address.slice(0, 4) +
-                  "..." +
-                  account.address.slice(-4)
-                : "Connect Wallet"} */}
-                  {t("short_connect_wallet")}
+                  {address
+                    ? address.slice(0, 4) + "..." + address.slice(-4)
+                    : t("short_connect_wallet")}
                 </p>
               </div>
             </button>
@@ -196,19 +208,13 @@ const Header: React.FC<HeaderProps> = ({ t, scrollToElement, refs }) => {
                     FAQ
                   </p>
                   {true ? (
-                    <button
-                      className="walletButton"
-                      // onClick={open}
-                    >
+                    <button className="walletButton" onClick={() => open()}>
                       <div className="flex items-center justify-center py-[7px] px-4 md:pl-[17px] md:pr-[22px] gap-[10px]">
                         <img src={wallet} alt="wallet" />
                         <p className="text-[12px] md:text-[14px] font-semibold leading-6">
-                          {/* {account.address
-                ? account.address.slice(0, 4) +
-                  "..." +
-                  account.address.slice(-4)
-                : "Connect Wallet"} */}
-                          {t("connect_wallet")}
+                          {address
+                            ? address.slice(0, 4) + "..." + address.slice(-4)
+                            : t("connect_wallet")}
                         </p>
                       </div>
                     </button>
