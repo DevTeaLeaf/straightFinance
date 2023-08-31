@@ -32,8 +32,8 @@ const YouTubePlayer: React.FC<YouTubePlayerProps> = ({ videoId }) => {
       });
     } else if (window.innerWidth <= 530) {
       setOpts({
-        height: "300vh",
-        width: "350vw",
+        height: "131px",
+        width: "300px",
         playerVars: {
           autoplay: 0,
         },
