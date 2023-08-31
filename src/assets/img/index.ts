@@ -15,13 +15,14 @@ import trust from "./trust.png";
 import usdt from "./usdt.png";
 import walletconnect from "./walletconnect.png";
 import bsc from "./bsc.png";
-import stackingBg from "./stackingBg.png";
+import stakingBg from "./stakingBg.png";
 import twoCards from "./twoCards.png";
 import card from "./card.png";
 import donut from "./donut.png";
 import plus from "./plus.png";
 import arrow from "./arrow.png";
 import rightBgArrow from "./rightBgArrow.png";
+import close from "./close.png";
 
 export {
   arrowDown,
@@ -41,11 +42,12 @@ export {
   usdt,
   walletconnect,
   bsc,
-  stackingBg,
+  stakingBg,
   card,
   twoCards,
   donut,
   plus,
   arrow,
+  close,
   rightBgArrow,
 };

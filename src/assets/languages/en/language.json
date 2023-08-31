@@ -1,6 +1,6 @@
 {
   "about_us": "About us",
-  "stacking": "Staking",
+  "staking": "Staking",
   "ref_system": "Referral system",
   "token_and_nft": "Token and NFT",
   "connect_wallet": "Connect Wallet",
@@ -51,10 +51,10 @@
   "growing_value_1": "SFinance is the token of the Straight Finance project, which allows its holders to receive a share of the project's profits",
   "growing_value_2": "The SFinance token has a limited supply, and we regularly burn some of the tokens, removing them from circulation. This approach increases the value of each token and increases the share of each holder.",
   "growing_value_3": "Buying and holding NFT MASK from our collection will be a profitable investment even for those who do not plan to invest, as their value will grow along with the development of the Straight Finance project.",
-  "stacking_1": "You have the opportunity to stake SFinance tokens and receive a fixed percentage of 20% per annum (APR). At the same time, your tokens will not be blocked, and you can withdraw the principal amount of the deposit along with earned interest at any time.",
-  "stacking_2": "In addition, while your tokens are staked, you will receive a share of the project's profits depending on your stake in the token. This gives you the opportunity to receive additional income from your participation in the project.",
+  "staking_1": "You have the opportunity to stake SFinance tokens and receive a fixed percentage of 20% per annum (APR). At the same time, your tokens will not be blocked, and you can withdraw the principal amount of the deposit along with earned interest at any time.",
+  "staking_2": "In addition, while your tokens are staked, you will receive a share of the project's profits depending on your stake in the token. This gives you the opportunity to receive additional income from your participation in the project.",
   "input_tokens": "Enter the number of tokens",
-  "in_stacking": "Submit for staking",
+  "in_staking": "Submit for staking",
   "in_pools": "Left in the staking pool",
   "sfinance_tokenomics": "Ownership of the SFinance token gives the right to receive a part of the profits of the Straight Finance project",
   "buy_tokens": "Buy SFinance tokens",
@@ -82,5 +82,7 @@
   "answer_3": "Yes, it's more than safe. We do not use instruments where funds can be liquidated, such as futures or margined options. We do not use leverage or other tools to increase our positions, as this could involve the risk of liquidation of users' funds. Therefore, we mainly use spot trading",
   "answer_4": "Our project invites you to invest with a return of 10% (and even more if you have NFT). One investment cycle usually takes 1-2 months, providing an average of 5%-10% monthly increase to the initial deposit without unnecessary risks. While independent trading will require you to: - Analyze the state of the market - Follow the latest news - Risk with your own funds in significant amounts to achieve the same 5% -10% monthly yield. In Straight Finance, you can invest your USDT and go about your business in peace, and then take the profits. In addition, many investors are not limited to one-time investments. They reinvest their profits. The following happens: Users invest in common capital -> Capital grows -> Capital gain increases -> Daily profit increases and turnover becomes more dynamic -> More users receive their payouts and reinvest again.",
   "answer_5": "There are several ways where you can earn good money: - Referral program. You can invite your friends and earn 10% of each friend's investment. In this case, the friend does not lose anything. For example: I invited a friend who is investing 1000 USDT. I get 100 USDT to my account instantly, and a friend joins the queue of investors and after that he will receive 1100 USDT (+10%) - SFinance utility token. Every day we distribute all profits among SFinance holders. You can buy an SFinance token and receive a share of the profits. Moreover, the SFinance token is deflationary. Simply put, over time it becomes less and less, so its price is growing! -Utility NFT. You can buy NFTs from our collection and hold them for later resale. Each NFT increases the return on investment (from 1% to 100%), while the effects of different NFTs add up! The number of NFTs is also limited, so their value is growing",
-  "answer_6": "We will always be happy to answer your questions in our telegram group"
+  "answer_6": "We will always be happy to answer your questions in our telegram group",
+  "wallet_address": "Enter wallet address",
+  "get_ref": "Get referral link"
 }

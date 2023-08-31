@@ -14,7 +14,7 @@ const YouTubePlayer: React.FC<YouTubePlayerProps> = ({ videoId }) => {
     },
   });
   const handleResize = () => {
-    if (screen.width >= 767) {
+    if (window.innerWidth >= 767) {
       setOpts({
         height: "400px",
         width: "700px",
@@ -22,7 +22,7 @@ const YouTubePlayer: React.FC<YouTubePlayerProps> = ({ videoId }) => {
           autoplay: 0,
         },
       });
-    } else if (screen.width < 767 && screen.width > 530) {
+    } else if (window.innerWidth < 767 && window.innerWidth > 530) {
       setOpts({
         height: "300px",
         width: "500px",
@@ -30,7 +30,7 @@ const YouTubePlayer: React.FC<YouTubePlayerProps> = ({ videoId }) => {
           autoplay: 0,
         },
       });
-    } else if (screen.width <= 530) {
+    } else if (window.innerWidth <= 530) {
       setOpts({
         height: "150px",
         width: "300px",

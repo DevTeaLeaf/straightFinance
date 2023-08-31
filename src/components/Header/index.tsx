@@ -8,7 +8,19 @@ import "./header.css";
 import LanguagesModal from "../LanguagesModal";
 import { wallet, arrowDown } from "#assets/img";
 
-const Header = ({ t }: { t: TFunction }) => {
+interface HeaderProps {
+  t: TFunction;
+  scrollToElement: (ref: React.RefObject<HTMLElement>) => void;
+  refs: {
+    about: React.RefObject<HTMLDivElement>;
+    staking: React.RefObject<HTMLDivElement>;
+    referral: React.RefObject<HTMLDivElement>;
+    token: React.RefObject<HTMLDivElement>;
+    faq: React.RefObject<HTMLDivElement>;
+  };
+}
+
+const Header: React.FC<HeaderProps> = ({ t, scrollToElement, refs }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
 
@@ -16,9 +28,16 @@ const Header = ({ t }: { t: TFunction }) => {
     if (isNavOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "hidden";
     }
   }, [isNavOpen]);
+
+  const closeNavAndScroll = (ref: React.RefObject<HTMLElement>) => {
+    setIsNavOpen(false);
+    scrollToElement(ref);
+  };
+
   return (
     <header className="w-full text-[#fff] manrope z-10">
       <div className="flex items-center justify-center h-[80px] mx-auto">
@@ -27,11 +46,36 @@ const Header = ({ t }: { t: TFunction }) => {
             STRAIGHT FINANCE
           </h3>
           <div className="text-[18px] leading-4 xl:flex hidden items-center gap-[25px] ml-[18px] mr-[46px] ">
-            <p className="cursor-pointer">{t("about_us")}</p>
-            <p className="cursor-pointer">{t("stacking")}</p>
-            <p className="cursor-pointer">{t("ref_system")}</p>
-            <p className="cursor-pointer">{t("token_and_nft")}</p>
-            <p className="cursor-pointer">FAQ</p>
+            <p
+              onClick={() => scrollToElement(refs.about)}
+              className="cursor-pointer"
+            >
+              {t("about_us")}
+            </p>
+            <p
+              onClick={() => scrollToElement(refs.staking)}
+              className="cursor-pointer"
+            >
+              {t("staking")}
+            </p>
+            <p
+              onClick={() => scrollToElement(refs.referral)}
+              className="cursor-pointer"
+            >
+              {t("ref_system")}
+            </p>
+            <p
+              onClick={() => scrollToElement(refs.token)}
+              className="cursor-pointer"
+            >
+              {t("token_and_nft")}
+            </p>
+            <p
+              onClick={() => scrollToElement(refs.faq)}
+              className="cursor-pointer"
+            >
+              FAQ
+            </p>
           </div>
           {true ? (
             <button
@@ -121,11 +165,36 @@ const Header = ({ t }: { t: TFunction }) => {
             <div className="flex justify-center items-center flex-col w-full">
               <div className="text-[#fff] px-5 w-full">
                 <div className="flex justify-between items-center flex-col gap-8 text-[18px] leading-4">
-                  <p className="cursor-pointer">{t("about_us")}</p>
-                  <p className="cursor-pointer">{t("stacking")}</p>
-                  <p className="cursor-pointer">{t("ref_system")}</p>
-                  <p className="cursor-pointer">{t("token_and_nft")}</p>
-                  <p className="cursor-pointer">FAQ</p>
+                  <p
+                    onClick={() => closeNavAndScroll(refs.about)}
+                    className="cursor-pointer"
+                  >
+                    {t("about_us")}
+                  </p>
+                  <p
+                    onClick={() => closeNavAndScroll(refs.staking)}
+                    className="cursor-pointer"
+                  >
+                    {t("staking")}
+                  </p>
+                  <p
+                    onClick={() => closeNavAndScroll(refs.referral)}
+                    className="cursor-pointer"
+                  >
+                    {t("ref_system")}
+                  </p>
+                  <p
+                    onClick={() => closeNavAndScroll(refs.token)}
+                    className="cursor-pointer"
+                  >
+                    {t("token_and_nft")}
+                  </p>
+                  <p
+                    onClick={() => closeNavAndScroll(refs.faq)}
+                    className="cursor-pointer"
+                  >
+                    FAQ
+                  </p>
                   {true ? (
                     <button
                       className="walletButton"

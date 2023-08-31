@@ -143,6 +143,14 @@ input {
 .faqTransition {
   transition: 0.5s ease;
 }
+.modalBg {
+  background: linear-gradient(
+    180deg,
+    rgba(111, 228, 198, 0.08) 0%,
+    rgba(0, 0, 0, 0.55) 86.42%
+  );
+  border: 1px solid #6fe4c6;
+}
 @media screen and (max-width: 767px) {
   .gradientCenterLine {
     max-width: 300px;

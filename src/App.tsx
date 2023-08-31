@@ -1,7 +1,15 @@
+import { useState, useRef } from "react";
+
 import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
-import { Header, Footer, YouTubePlayer, FAQ } from "./components";
+import {
+  Header,
+  Footer,
+  YouTubePlayer,
+  FAQ,
+  ReferralModal,
+} from "./components";
 
 import { PECULIARITIES, CATEGORIES } from "#constants";
 
@@ -20,7 +28,7 @@ import {
   usdt,
   walletconnect,
   bsc,
-  stackingBg,
+  stakingBg,
   card,
   twoCards,
   donut,
@@ -29,10 +37,34 @@ import {
 } from "#assets/img";
 
 const App = ({ t }: { t: TFunction }) => {
+  const refs = {
+    about: useRef<HTMLDivElement>(null),
+    staking: useRef<HTMLDivElement>(null),
+    referral: useRef<HTMLDivElement>(null),
+    token: useRef<HTMLDivElement>(null),
+    faq: useRef<HTMLDivElement>(null),
+  };
+
+  const [refModal, setRefModal] = useState(false);
+
+  const scrollToElement = (ref: React.RefObject<HTMLElement>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
-      <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px] overflow-x-hidden">
-        <Header />
+      <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px]">
+        <Header scrollToElement={scrollToElement} refs={refs} />
         <div className="grow max-w-[1440px] manrope mx-auto z-0">
           <div
             style={{ backgroundImage: `url(${net})` }}
@@ -93,7 +125,10 @@ const App = ({ t }: { t: TFunction }) => {
             </div>
             <YouTubePlayer videoId={"Zi8vJ_lMxQI"} />
           </div>
-          <div className="mt-[80px] flex flex-col items-center gap-[60px]">
+          <div
+            ref={refs.about}
+            className="mt-[80px] flex flex-col items-center gap-[60px]"
+          >
             <div className="absolute mt-[-70px] z-0">
               <img src={statisticBg} alt="statisticBg" />
               <div className="statisticBacklight absolute top-[30%] right-[30%]"></div>
@@ -204,7 +239,10 @@ const App = ({ t }: { t: TFunction }) => {
               </button>
             )}
           </div>
-          <div className="mt-[90px] md:mt-[144px] flex flex-col items-center gap-10">
+          <div
+            ref={refs.referral}
+            className="mt-[90px] md:mt-[144px] flex flex-col items-center gap-10"
+          >
             <div className="flex flex-col items-center gap-4">
               <div className="flex gap-3 text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
                 <h3 className="text-white">{t("earnings")}</h3>
@@ -231,7 +269,10 @@ const App = ({ t }: { t: TFunction }) => {
                 </p>
               </div>
             </div>
-            <button className="bg-[#6FE4C6] rounded-[87px]">
+            <button
+              onClick={() => setRefModal(true)}
+              className="bg-[#6FE4C6] rounded-[87px]"
+            >
               <p className="text-[#000] px-[60px] py-[15px] text-[14px] font-semibold leading-6">
                 {t("become_ref")}
               </p>
@@ -371,17 +412,17 @@ const App = ({ t }: { t: TFunction }) => {
               })}
             </div>
           </div>
-          <div className="text-white relative">
+          <div ref={refs.staking} className="text-white relative">
             <div>
               <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold uppercase mb-3 text-center md:text-left">
-                {t("stacking")}
+                {t("staking")}
               </h1>
               <div className="max-w-[670px] flex flex-col items-center text-center md:text-left md:items-start gap-5 px-[15px] md:px-0">
                 <p className="text-[14px] leading-[18.2px] md:text-[20px] md:leading-[30px]">
-                  {t("stacking_1")}
+                  {t("staking_1")}
                 </p>
                 <p className="text-[14px] leading-[18.2px] md:text-[20px] md:leading-[30px]">
-                  {t("stacking_2")}
+                  {t("staking_2")}
                 </p>
               </div>
               <div className="flex items-center gap-1 md:gap-[15px] mt-[10px] md:mt-[80px] justify-center md:justify-start">
@@ -392,7 +433,7 @@ const App = ({ t }: { t: TFunction }) => {
                 />
                 <button className="bg-[#6FE4C6] rounded-[87px]">
                   <p className="text-[#000] md:px-[60px] py-2 md:py-[15px] text-[12px] md:text-[16px] font-semibold leading-6 w-[146px] md:w-auto">
-                    {t("in_stacking")}
+                    {t("in_staking")}
                   </p>
                 </button>
               </div>
@@ -402,11 +443,11 @@ const App = ({ t }: { t: TFunction }) => {
             </div>
             <img
               className="md:absolute md:top-[-5%] md:z-[-1]"
-              src={stackingBg}
-              alt="Stacking background"
+              src={stakingBg}
+              alt="Staking background"
             />
           </div>
-          <div className="mt-10 md:mt-[160px] text-white">
+          <div ref={refs.token} className="mt-10 md:mt-[160px] text-white">
             <div className="flex justify-center items-center flex-col gap-2 md:gap-4">
               {" "}
               <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase">
@@ -510,7 +551,7 @@ const App = ({ t }: { t: TFunction }) => {
               </p>
             </button>
           </div>
-          <div className="mt-[96px] md:mt-[160px] relative">
+          <div ref={refs.faq} className="mt-[96px] md:mt-[160px] relative">
             <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-6 text-center">
               FAQ
             </h1>{" "}
@@ -518,7 +559,10 @@ const App = ({ t }: { t: TFunction }) => {
             <div className="backlight absolute top-[30%] left-[-20%] hidden md:block"></div>
             <div className="backlight absolute top-[30%] right-[-20%] hidden md:block"></div>
           </div>
-          <div className="mt-[60px] flex items-center justify-center cursor-pointer">
+          <div
+            onClick={scrollToTop}
+            className="mt-[60px] flex items-center justify-center cursor-pointer"
+          >
             <img
               className="py-[15px] px-4 rounded-[5px] bg-[#1C2833]"
               src={arrow}
@@ -526,6 +570,7 @@ const App = ({ t }: { t: TFunction }) => {
             />
           </div>
         </div>
+        {refModal && <ReferralModal setModal={setRefModal} />}
         <Footer />
       </div>
     </>
