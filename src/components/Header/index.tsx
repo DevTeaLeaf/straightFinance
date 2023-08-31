@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import i18n from "#translate/i18n";
 import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
@@ -11,6 +11,14 @@ import { wallet, arrowDown } from "#assets/img";
 const Header = ({ t }: { t: TFunction }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
+
+  useEffect(() => {
+    if (isNavOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isNavOpen]);
   return (
     <header className="w-full text-[#fff] manrope z-10">
       <div className="flex items-center justify-center h-[80px] mx-auto">
@@ -79,7 +87,7 @@ const Header = ({ t }: { t: TFunction }) => {
             />
           </div>
         </div>
-        <section className="flex xl:hidden absolute right-[16px] md:right-[26px] z-50 overflow-hidden">
+        <section className="flex xl:hidden absolute right-[16px] md:right-[26px] z-50">
           <div
             className="space-y-2 cursor-pointer"
             onClick={() => setIsNavOpen((prev) => !prev)}
