@@ -31,7 +31,7 @@ import {
 const App = ({ t }: { t: TFunction }) => {
   return (
     <>
-      <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px]">
+      <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px] overflow-x-hidden">
         <Header />
         <div className="grow max-w-[1440px] manrope mx-auto z-0">
           <div

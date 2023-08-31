@@ -79,7 +79,7 @@ const Header = ({ t }: { t: TFunction }) => {
             />
           </div>
         </div>
-        <section className="flex xl:hidden absolute right-[16px] md:right-[26px] z-50">
+        <section className="flex xl:hidden absolute right-[16px] md:right-[26px] z-50 overflow-hidden">
           <div
             className="space-y-2 cursor-pointer"
             onClick={() => setIsNavOpen((prev) => !prev)}
