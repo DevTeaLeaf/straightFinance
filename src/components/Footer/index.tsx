@@ -30,7 +30,7 @@ const Footer = ({ t }: { t: TFunction }) => {
           <div className="flex items-center gap-6 md:gap-[55px] flex-col-reverse md:flex-row">
             <div className="flex items-center gap-5">
               {" "}
-              <a href="#">
+              <a target="_blank" href="https://t.me/straight_finance">
                 <img
                   src={telegram}
                   alt="telegram"

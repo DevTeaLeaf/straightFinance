@@ -3,6 +3,8 @@ import { useState, useRef } from "react";
 import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
+import i18n from "#translate/i18n";
+
 import {
   Header,
   Footer,
@@ -43,6 +45,7 @@ const Home = ({ t }: { t: TFunction }) => {
     referral: useRef<HTMLDivElement>(null),
     token: useRef<HTMLDivElement>(null),
     faq: useRef<HTMLDivElement>(null),
+    buy: useRef<HTMLDivElement>(null),
   };
 
   const [refModal, setRefModal] = useState(false);
@@ -70,12 +73,12 @@ const Home = ({ t }: { t: TFunction }) => {
             style={{ backgroundImage: `url(${net})` }}
             className="flex flex-col items-center justify-center gap-[30px] netBg"
           >
-            <div className="minBacklight absolute top-[10%] md:hidden"></div>
-            <div className="absolute left-[-5%] top-[0] z-0 md:block hidden">
+            <div className="minBacklight absolute top-[10%] md:hidden z-[-1]"></div>
+            <div className="absolute left-[-5%] top-[0] z-[-1] md:block hidden">
               <img src={leftBgArrow} alt="bgArrow" />
               <div className="backlight absolute top-[35%] left-[5%]"></div>
             </div>
-            <div className="absolute right-[-3%] top-[0] z-0 md:block hidden">
+            <div className="absolute right-[-3%] top-[0] z-[-1] md:block hidden">
               <img src={rightBgArrow} alt="bgArrow" />
               <div className="backlight absolute top-[40%] right-[5%]"></div>
             </div>
@@ -86,14 +89,17 @@ const Home = ({ t }: { t: TFunction }) => {
               {t("main_h3")}
             </h3>
             <div className="flex items-center flex-col md:flex-row gap-5 mb-[60px] md:mb-[100px]">
-              <button className="bg-[#6FE4C6] rounded-[87px] ml-[10px]">
+              <button
+                onClick={() => scrollToElement(refs.buy)}
+                className="bg-[#6FE4C6] rounded-[87px] ml-[10px] cursor-pointer"
+              >
                 <p className="text-[#000] px-[29px] py-2 text-[14px] font-semibold leading-6">
                   {t("how_it_works")}
                 </p>
               </button>
               <div className="flex items-center gap-5">
                 {" "}
-                <a href="#">
+                <a target="_blank" href="https://t.me/straight_finance">
                   <img
                     src={telegram}
                     alt="telegram"
@@ -123,7 +129,12 @@ const Home = ({ t }: { t: TFunction }) => {
                 </a>
               </div>
             </div>
-            <YouTubePlayer videoId={"Zi8vJ_lMxQI"} />
+            <div className={`${i18n.language === "en" ? "block" : "hidden"}`}>
+              <YouTubePlayer videoId="Yua-bQwNcmI" />
+            </div>
+            <div className={`${i18n.language === "ru" ? "block" : "hidden"}`}>
+              <YouTubePlayer videoId="WmQLdMoRn1o" />
+            </div>
           </div>
           <div
             ref={refs.about}
@@ -244,9 +255,9 @@ const Home = ({ t }: { t: TFunction }) => {
             className="mt-[90px] md:mt-[144px] flex flex-col items-center gap-10"
           >
             <div className="flex flex-col items-center gap-4">
-              <div className="flex gap-3 text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
+              <div className="mb-[-40px] md:mb-0 flex gap-3 text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
                 <h3 className="text-white">{t("earnings")}</h3>
-                <h3 className="textGradient">{t("refs")}</h3>
+                <h3 className="textGradient h-[60px]">{t("refs")}</h3>
               </div>
               <h4 className="text-white text-[14px] leading-[18.2px] md:text-[18px] font-light md:leading-[23px] max-w-[282px] md:max-w-full text-center">
                 {t("percents")}
@@ -281,6 +292,7 @@ const Home = ({ t }: { t: TFunction }) => {
           <div
             style={{ backgroundImage: `url(${net})` }}
             className="mt-[101px] flex flex-col text-[#fff]"
+            ref={refs.buy}
           >
             <div className="relative">
               <h1 className="font-bold leading-[21px] md:leading-[51px] text-[20px] md:text-[48px] mb-4 ml-[15px] md:ml-[80px]">
@@ -369,7 +381,7 @@ const Home = ({ t }: { t: TFunction }) => {
           </div>
           <div className="text-white mt-[50px] md:mt-[200px] flex flex-col gap-[50px]">
             <div className="flex flex-col items-center justify-center gap-[25px]">
-              <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold">
+              <h1 className="textGradient text-[20px] leading-[21px] md:text-[48px] md:leading-[51px] font-bold mb-[-50px] md:mb-0 h-[60px]">
                 {t("peculiarities")}
               </h1>
               <h3 className="text-[14px] md:text-[18px] font-light leading-[18.2px] md:leading-[23px] max-w-[700px] text-center px-[15px]">
