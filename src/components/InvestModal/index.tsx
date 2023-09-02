@@ -5,12 +5,12 @@ import { withTranslation } from "react-i18next";
 
 import { close } from "#assets/img";
 
-interface ReferralModal {
+interface InvestModal {
   t: TFunction;
   setModal: (value: boolean) => void;
 }
 
-const ReferralModal: React.FC<ReferralModal> = ({ t, setModal }) => {
+const InvestModal: React.FC<InvestModal> = ({ t, setModal }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -49,11 +49,11 @@ const ReferralModal: React.FC<ReferralModal> = ({ t, setModal }) => {
             <input
               type="text"
               className="w-[287px] border border-[#6FE4C6] bg-transparent py-2 md:py-4 px-6 rounded-[34px] "
-              placeholder={t("wallet_address")}
+              placeholder={t("sum")}
             />
             <button className="bg-[#6FE4C6] rounded-[87px] w-[287px]">
               <p className="text-[#000] md:px-[60px] py-2 md:py-[15px] text-[12px] md:text-[16px] font-semibold leading-6">
-                {t("get_ref")}
+                {t("invest")}
               </p>
             </button>
           </div>
@@ -63,4 +63,4 @@ const ReferralModal: React.FC<ReferralModal> = ({ t, setModal }) => {
   );
 };
 
-export default withTranslation()(ReferralModal);
+export default withTranslation()(InvestModal);

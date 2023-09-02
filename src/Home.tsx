@@ -11,6 +11,8 @@ import {
   YouTubePlayer,
   FAQ,
   ReferralModal,
+  Slider,
+  InvestModal,
 } from "./components";
 
 import { PECULIARITIES, CATEGORIES } from "#constants";
@@ -49,6 +51,7 @@ const Home = ({ t }: { t: TFunction }) => {
   };
 
   const [refModal, setRefModal] = useState(false);
+  const [investModal, setInvestModal] = useState(false);
 
   const scrollToElement = (ref: React.RefObject<HTMLElement>) => {
     if (ref.current) {
@@ -88,7 +91,7 @@ const Home = ({ t }: { t: TFunction }) => {
             <h3 className="text-white text-[14px] md:text-[18px] leading-[17.5px] md:leading-6 font-light max-w-[360px] md:max-w-[645px] text-center">
               {t("main_h3")}
             </h3>
-            <div className="flex items-center flex-col md:flex-row gap-5 mb-[60px] md:mb-[100px]">
+            <div className="flex items-center flex-col md:flex-row gap-5">
               <button
                 onClick={() => scrollToElement(refs.buy)}
                 className="bg-[#6FE4C6] rounded-[87px] ml-[10px] cursor-pointer"
@@ -129,6 +132,14 @@ const Home = ({ t }: { t: TFunction }) => {
                 </a>
               </div>
             </div>
+            <button
+              onClick={() => setInvestModal(true)}
+              className="bg-[#6FE4C6] rounded-[87px] mb-[60px] md:mb-[100px]"
+            >
+              <p className="text-[#000] md:px-[60px] py-2 md:py-[15px] text-[12px] md:text-[16px] font-semibold leading-6 w-[146px] md:w-auto">
+                {t("invest")}
+              </p>
+            </button>
             <div className={`${i18n.language === "en" ? "block" : "hidden"}`}>
               <YouTubePlayer videoId="Yua-bQwNcmI" />
             </div>
@@ -388,7 +399,7 @@ const Home = ({ t }: { t: TFunction }) => {
                 {t("peculiarities_description")}
               </h3>
             </div>
-            <div className="">
+            <div>
               {PECULIARITIES.map((element, index) => {
                 return (
                   <div
@@ -400,25 +411,29 @@ const Home = ({ t }: { t: TFunction }) => {
                         <p className="boldTextGradient">0{index + 1}.</p>{" "}
                         <p>{t(element.header)}</p>
                       </div>
-                      <div className="gradientLineBg w-[500px] h-[1px] ml-[-100px] hidden md:flex"></div>
+                      <div className="gradientLineBg w-[300px] md:w-[500px] h-[1px] ml-[-100px]"></div>
                     </div>
-                    <div className="flex gap-[45px] md:gap-[90px] flex-wrap items-center justify-center">
-                      {element.properties.map((e) => {
-                        return (
-                          <div
-                            className="max-w-[342px] rounded-[10px] border border-[#6FE4C6]"
-                            key={e}
-                          >
-                            <div className="flex flex-col items-start gap-4 py-[16px] md:py-[30px] px-6 md:px-5 w-[324px] h-[176px] md:w-[342px] md:h-[215px]">
-                              <img src={bsc} alt="bsc" />
-                              <p className="text-[14px] font-light leading-[18.62px]">
-                                {t(e)}
-                              </p>
+                    {window.innerWidth >= 767 ? (
+                      <div className="flex gap-[45px] md:gap-[90px] flex-wrap items-center justify-center">
+                        {element.properties.map((e) => {
+                          return (
+                            <div
+                              className="max-w-[342px] rounded-[10px] border border-[#6FE4C6]"
+                              key={e}
+                            >
+                              <div className="flex flex-col items-start gap-4 py-[16px] md:py-[30px] px-6 md:px-5 w-[324px] h-[176px] md:w-[342px] md:h-[215px]">
+                                <img src={bsc} alt="bsc" />
+                                <p className="text-[14px] font-light leading-[18.62px]">
+                                  {t(e)}
+                                </p>
+                              </div>
                             </div>
-                          </div>
-                        );
-                      })}
-                    </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <Slider slides={element.properties} />
+                    )}
                   </div>
                 );
               })}
@@ -523,7 +538,14 @@ const Home = ({ t }: { t: TFunction }) => {
               <div className="text-[#6FE4C6] text-[16px] font-bold leading-[22px] py-[25px] px-3 text-center boxBg">
                 {t("min_tokens")} - 1 USDT
               </div>
-
+              <button
+                onClick={() => setInvestModal(true)}
+                className="bg-[#6FE4C6] rounded-[87px]"
+              >
+                <p className="text-[#000] md:px-[60px] py-2 md:py-[15px] text-[12px] md:text-[16px] font-semibold leading-6 w-[146px] md:w-auto">
+                  {t("invest")}
+                </p>
+              </button>
               <div className="max-w-[300px] md:max-w-[387px] w-full relative">
                 <div className="w-[40%] h-[13px] bg-[#6FE4C6] rounded-[21px]"></div>
                 <div className="w-full h-[13px] bg-white rounded-[21px] absolute top-0 z-[-1]"></div>
@@ -583,6 +605,7 @@ const Home = ({ t }: { t: TFunction }) => {
           </div>
         </div>
         {refModal && <ReferralModal setModal={setRefModal} />}
+        {investModal && <InvestModal setModal={setInvestModal} />}
         <Footer />
       </div>
     </>

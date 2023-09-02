@@ -12,7 +12,7 @@ import "./header.css";
 import LanguagesModal from "../LanguagesModal";
 import { wallet, arrowDown } from "#assets/img";
 
-interface HeaderProps {
+interface Header {
   t: TFunction;
   scrollToElement: (ref: React.RefObject<HTMLElement>) => void;
   refs: {
@@ -24,7 +24,7 @@ interface HeaderProps {
   };
 }
 
-const Header: React.FC<HeaderProps> = ({ t, scrollToElement, refs }) => {
+const Header: React.FC<Header> = ({ t, scrollToElement, refs }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
 

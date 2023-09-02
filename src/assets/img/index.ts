@@ -23,6 +23,8 @@ import plus from "./plus.png";
 import arrow from "./arrow.png";
 import rightBgArrow from "./rightBgArrow.png";
 import close from "./close.png";
+import move from "./move.png";
+import moveActive from "./moveActive.png";
 
 export {
   arrowDown,
@@ -50,4 +52,6 @@ export {
   arrow,
   close,
   rightBgArrow,
+  move,
+  moveActive,
 };

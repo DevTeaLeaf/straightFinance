@@ -3,7 +3,7 @@ import { withTranslation, useTranslation } from "react-i18next";
 import { FAQ_DATA } from "#constants";
 import { plus } from "#assets/img";
 
-interface ItemProps {
+interface Item {
   question: string;
   answer: string;
   isOpen: boolean;
@@ -11,7 +11,7 @@ interface ItemProps {
   t: any;
 }
 
-const Item = ({ question, answer, isOpen, toggleOpen, t }: ItemProps) => {
+const Item = ({ question, answer, isOpen, toggleOpen, t }: Item) => {
   return (
     <div
       className="w-full manrope rounded-[10px] cursor-pointer"
