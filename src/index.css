@@ -155,4 +155,10 @@ input {
   .gradientCenterLine {
     max-width: 300px;
   }
+  .backlight {
+    width: 331px;
+  }
+  .minBacklight {
+    width: 331px;
+  }
 }
