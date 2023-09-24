@@ -1,12 +1,12 @@
 import i18n from "#translate/i18n";
 
-interface LanguagesModal {
+interface ILanguagesModal {
   inTop: boolean;
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const LanguagesModal: React.FC<LanguagesModal> = ({
+const LanguagesModal: React.FC<ILanguagesModal> = ({
   inTop,
   active,
   setActive,

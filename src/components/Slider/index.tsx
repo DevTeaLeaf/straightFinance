@@ -5,12 +5,12 @@ import { withTranslation } from "react-i18next";
 
 import { move, moveActive, bsc } from "#assets/img";
 
-interface Slider {
+interface ISlider {
   t: TFunction;
   slides: any;
 }
 
-const Slider: React.FC<Slider> = ({ t, slides }) => {
+const Slider: React.FC<ISlider> = ({ t, slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextIndex = () => {

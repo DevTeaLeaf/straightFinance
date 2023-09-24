@@ -5,12 +5,12 @@ import { withTranslation } from "react-i18next";
 
 import { close } from "#assets/img";
 
-interface ReferralModal {
+interface IReferralModal {
   t: TFunction;
   setModal: (value: boolean) => void;
 }
 
-const ReferralModal: React.FC<ReferralModal> = ({ t, setModal }) => {
+const ReferralModal: React.FC<IReferralModal> = ({ t, setModal }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {

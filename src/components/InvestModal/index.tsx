@@ -4,13 +4,12 @@ import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
 import { close } from "#assets/img";
-
-interface InvestModal {
+interface IInvestModal {
   t: TFunction;
   setModal: (value: boolean) => void;
 }
 
-const InvestModal: React.FC<InvestModal> = ({ t, setModal }) => {
+const InvestModal: React.FC<IInvestModal> = ({ t, setModal }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -18,7 +17,6 @@ const InvestModal: React.FC<InvestModal> = ({ t, setModal }) => {
       setModal(false);
     }
   };
-
   useEffect(() => {
     document.body.style.overflow = "hidden";
     document.addEventListener("mousedown", handleClickOutside);
@@ -28,6 +26,7 @@ const InvestModal: React.FC<InvestModal> = ({ t, setModal }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   return (
     <div>
       <div className="bg-[#13141f] w-full h-full fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[50] opacity-80"></div>

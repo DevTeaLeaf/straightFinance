@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import YouTube from "react-youtube";
 
-interface YouTubePlayer {
+interface IYouTubePlayer {
   videoId: string;
 }
 
-const YouTubePlayer: React.FC<YouTubePlayer> = ({ videoId }) => {
+const YouTubePlayer: React.FC<IYouTubePlayer> = ({ videoId }) => {
   const [opts, setOpts] = useState({
     height: "150px",
     width: "300px",
