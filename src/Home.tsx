@@ -1,9 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
 import i18n from "#translate/i18n";
+
+import { useContract, useSigner } from "wagmi";
 
 import {
   Header,
@@ -40,6 +42,8 @@ import {
   rightBgArrow,
 } from "#assets/img";
 
+import { QUEUE_MANAGER, QueueManagerABI } from "#web3/constants";
+
 const Home = ({ t }: { t: TFunction }) => {
   const refs = {
     about: useRef<HTMLDivElement>(null),
@@ -48,6 +52,20 @@ const Home = ({ t }: { t: TFunction }) => {
     token: useRef<HTMLDivElement>(null),
     faq: useRef<HTMLDivElement>(null),
     buy: useRef<HTMLDivElement>(null),
+  };
+
+  const { data: signer } = useSigner();
+
+  const QMContract: any = useContract({
+    address: QUEUE_MANAGER,
+    abi: QueueManagerABI,
+    signerOrProvider: signer,
+  });
+
+  // web3
+
+  const claim = async () => {
+    await QMContract.claim();
   };
 
   const [refModal, setRefModal] = useState(false);
@@ -67,6 +85,10 @@ const Home = ({ t }: { t: TFunction }) => {
       behavior: "smooth",
     });
   };
+
+  useEffect(() => {
+    console.log(QMContract);
+  }, []);
   return (
     <>
       <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px] overflow-x-hidden">
@@ -253,13 +275,12 @@ const Home = ({ t }: { t: TFunction }) => {
                 </p>
               </div>
             </div>
-            {false && (
-              <button className="bg-[#6FE4C6] rounded-[87px]">
-                <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
-                  {t("claim")}
-                </p>
-              </button>
-            )}
+
+            <button onClick={claim} className="bg-[#6FE4C6] rounded-[87px]">
+              <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
+                {t("claim")}
+              </p>
+            </button>
           </div>
           <div
             ref={refs.referral}
