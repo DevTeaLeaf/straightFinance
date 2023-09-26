@@ -4,7 +4,7 @@ import { TFunction } from "i18next";
 import { withTranslation } from "react-i18next";
 
 import { useWeb3Modal } from "@web3modal/react";
-import { useAccount, useNetwork, useSwitchNetwork } from "wagmi"; //import useSigner
+import { useAccount, useNetwork, useSwitchNetwork } from "wagmi";
 
 import i18n from "#translate/i18n";
 import "./header.css";
@@ -30,9 +30,6 @@ const Header: React.FC<IHeader> = ({ t, scrollToElement, refs }) => {
 
   const { address } = useAccount();
   const { open } = useWeb3Modal();
-  //const { data } = useSigner();
-  // data === signer
-  // data.provider === provider
 
   const { chain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();

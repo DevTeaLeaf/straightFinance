@@ -5,7 +5,7 @@ import { withTranslation } from "react-i18next";
 
 import i18n from "#translate/i18n";
 
-import { useContract, useSigner } from "wagmi";
+import { useContract, useSigner, useAccount } from "wagmi";
 
 import {
   Header,
@@ -42,9 +42,17 @@ import {
   rightBgArrow,
 } from "#assets/img";
 
-import { QUEUE_MANAGER, QueueManagerABI } from "#web3/constants";
+import {
+  QUEUE_MANAGER,
+  USDT,
+  QueueManagerABI,
+  TokenABI,
+  GAS,
+} from "#web3/constants";
 
 const Home = ({ t }: { t: TFunction }) => {
+  const [haveToClaim, setHaveToClaim] = useState(false);
+
   const refs = {
     about: useRef<HTMLDivElement>(null),
     staking: useRef<HTMLDivElement>(null),
@@ -55,18 +63,17 @@ const Home = ({ t }: { t: TFunction }) => {
   };
 
   const { data: signer } = useSigner();
-
+  const { address } = useAccount();
   const QMContract: any = useContract({
     address: QUEUE_MANAGER,
     abi: QueueManagerABI,
     signerOrProvider: signer,
   });
-
-  // web3
-
-  const claim = async () => {
-    await QMContract.claim();
-  };
+  const TContract: any = useContract({
+    address: USDT,
+    abi: TokenABI,
+    signerOrProvider: signer,
+  });
 
   const [refModal, setRefModal] = useState(false);
   const [investModal, setInvestModal] = useState(false);
@@ -86,9 +93,45 @@ const Home = ({ t }: { t: TFunction }) => {
     });
   };
 
+  // web3
+  const claim = async () => {
+    await QMContract.claim();
+  };
+
+  const invest = async (amount: number) => {
+    let refAddress;
+    if (window.location.pathname.length > 40) {
+      refAddress = window.location.pathname.slice(5);
+    } else {
+      refAddress = "0x0000000000000000000000000000000000000000";
+    }
+
+    const allowance = String(await TContract.allowance(QUEUE_MANAGER, address));
+
+    while (Number(allowance) < amount) {
+      const wei = amount * Math.pow(10, 18);
+      const approve = await TContract.approve(QUEUE_MANAGER, wei.toString(), {
+        gasLimit: GAS,
+      });
+      await approve.wait();
+    }
+
+    const transaction = await QMContract.invest(amount, refAddress);
+    await transaction.wait();
+  };
+  const getClaimInfo = async () => {
+    const userReward = String(await QMContract.usersReward(address));
+    if (userReward) {
+      setHaveToClaim(true);
+    } else {
+      setHaveToClaim(false);
+    }
+  };
   useEffect(() => {
-    console.log(QMContract);
-  }, []);
+    if (QMContract) {
+      getClaimInfo();
+    }
+  }, [QMContract, signer]);
   return (
     <>
       <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px] overflow-x-hidden">
@@ -275,12 +318,13 @@ const Home = ({ t }: { t: TFunction }) => {
                 </p>
               </div>
             </div>
-
-            <button onClick={claim} className="bg-[#6FE4C6] rounded-[87px]">
-              <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
-                {t("claim")}
-              </p>
-            </button>
+            {haveToClaim && (
+              <button onClick={claim} className="bg-[#6FE4C6] rounded-[87px]">
+                <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
+                  {t("claim")}
+                </p>
+              </button>
+            )}
           </div>
           <div
             ref={refs.referral}
@@ -474,14 +518,14 @@ const Home = ({ t }: { t: TFunction }) => {
                 </p>
               </div>
               <div className="flex items-center gap-1 md:gap-[15px] mt-[10px] md:mt-[80px] justify-center md:justify-start">
-                <input
+                {/* <input
                   type="text"
                   className="border border-[#6FE4C6] bg-transparent py-2 md:py-4 px-6 rounded-[34px] md:min-w-[266px] max-w-[195px]"
                   placeholder={t("input_tokens")}
-                />
+                /> */}
                 <button className="bg-[#6FE4C6] rounded-[87px]">
                   <p className="text-[#000] md:px-[60px] py-2 md:py-[15px] text-[12px] md:text-[16px] font-semibold leading-6 w-[146px] md:w-auto">
-                    {t("in_staking")}
+                    {/*t("in_staking")*/ t("cooming_soon")}
                   </p>
                 </button>
               </div>
@@ -560,11 +604,11 @@ const Home = ({ t }: { t: TFunction }) => {
                 {t("min_tokens")} - 1 USDT
               </div>
               <button
-                onClick={() => setInvestModal(true)}
+                // onClick={() => setInvestModal(true)}
                 className="bg-[#6FE4C6] rounded-[87px]"
               >
                 <p className="text-[#000] md:px-[60px] py-2 md:py-[15px] text-[12px] md:text-[16px] font-semibold leading-6 w-[146px] md:w-auto">
-                  {t("invest")}
+                  {/*t("invest")*/ t("cooming_soon")}
                 </p>
               </button>
               <div className="max-w-[300px] md:max-w-[387px] w-full relative">
@@ -588,7 +632,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <button className="bg-[#6FE4C6] rounded-[87px] mt-[64px] md:block hidden">
                 <p className="text-[#000] px-[60px] py-[15px] text-[16px] font-semibold leading-6">
-                  {t("buy_nft")}
+                  {t("cooming_soon")}
                 </p>
               </button>
             </div>
@@ -626,7 +670,9 @@ const Home = ({ t }: { t: TFunction }) => {
           </div>
         </div>
         {refModal && <ReferralModal setModal={setRefModal} />}
-        {investModal && <InvestModal setModal={setInvestModal} />}
+        {investModal && (
+          <InvestModal setModal={setInvestModal} invest={invest} />
+        )}
         <Footer />
       </div>
     </>
