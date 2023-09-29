@@ -4,7 +4,6 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-
 contract QueueManager is Ownable {
 
     //===================================================================================================//
@@ -18,22 +17,31 @@ contract QueueManager is Ownable {
     address public insuranceFund = 0x21306fCe05B9EedBa323E447599a8786239c5f4a; 
     address public USDT = 0x55d398326f99059fF775485246999027B3197955;
 
-    uint public userCount;
-    uint public nextRewardCount;
+    uint public userCount; 
+    uint public nextRewardCount; 
     uint public regularReward = 10;
     uint public maxQueueLength = 100;
     uint public minInvest = 10e18;
+    uint public totalInvested; 
+    uint public totalPaid;
 
     bool opened;
 
     mapping(uint => userInfo) public queue;
     mapping(address => uint) public usersReward;
+    mapping(address => PaymentInfo) public paymentInfo;
     mapping(address => address) public referrals;
 
     struct userInfo {
         address userAddress;
         uint invested;
         uint reward;
+    }
+
+    struct PaymentInfo {
+        uint currentInvestment;
+        uint futureReceive;
+        uint totalRecevied;
     }
 
     //===================================================================================================//
@@ -54,6 +62,42 @@ contract QueueManager is Ownable {
         queue[userCount].invested = amount;
         queue[userCount].reward = reward;
         userCount++;
+        totalInvested+=amount;
+        paymentInfo[msg.sender].currentInvestment += amount;
+    }
+
+    
+    function claim() external {
+        if(usersReward[msg.sender] > 0) {
+            uint _balance = usersReward[msg.sender];
+            usersReward[msg.sender] = 0;
+            IERC20(USDT).transfer(msg.sender, _balance);
+            paymentInfo[msg.sender].totalRecevied += _balance;
+        }
+    }
+
+    //===================================================================================================//
+    //                                                                                                   //
+    //                                         View's Functions                                          //
+    //                                                                                                   //
+    //===================================================================================================//
+
+    function totalInQueue() public view returns(uint){
+        return userCount - nextRewardCount;
+    }
+
+    function myPositionsInLine() public view returns(uint[] memory){
+        uint count = nextRewardCount;
+        uint[] memory myPositions = new uint[](10);
+        uint counter;
+        while(count <= userCount){
+            if(queue[count].userAddress == msg.sender){
+                myPositions[counter] = counter + 1;
+                counter++;
+            }
+            count++;
+        }
+        return myPositions;
     }
 
     //===================================================================================================//
@@ -73,18 +117,22 @@ contract QueueManager is Ownable {
     }
 
     function disributeReward(uint amount) private {
+        uint amountBeforeStart = amount;
         uint currentUser = nextRewardCount;
         for(uint i; i < maxQueueLength; i++){
             uint reward = queue[currentUser].reward;
             if(int(amount) - int(reward) > 0){
                 queue[currentUser].reward = 0;
                 usersReward[queue[currentUser].userAddress] += reward;
+                paymentInfo[queue[currentUser].userAddress].futureReceive += reward;
                 amount -= reward;
                 currentUser++;
                 if (queue[currentUser].reward == 0 || amount == 0) {break;}
             } else {
                 queue[currentUser].reward -= amount;
                 usersReward[queue[currentUser].userAddress] += amount;
+                paymentInfo[queue[currentUser].userAddress].futureReceive += amount;
+                paymentInfo[queue[currentUser].userAddress].futureReceive -= queue[currentUser].invested;
                 amount = 0;
                 break;
             }
@@ -94,16 +142,10 @@ contract QueueManager is Ownable {
         if(amount > 0){
             IERC20(USDT).transfer(msg.sender, amount);
         }
+        totalPaid+= amountBeforeStart - amount; 
         nextRewardCount = currentUser;
     }
 
-    function claim() external {
-        if(usersReward[msg.sender] > 0) {
-            uint _balance = usersReward[msg.sender];
-            usersReward[msg.sender] = 0;
-            IERC20(USDT).transfer(msg.sender, _balance);
-        }
-    }
 
     function setInvestStatus(bool _opened) external onlyOwner {
         opened = _opened;

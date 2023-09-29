@@ -53,6 +53,18 @@ import {
 const Home = ({ t }: { t: TFunction }) => {
   const [haveToClaim, setHaveToClaim] = useState(false);
 
+  const [statistics, setStatistics] = useState({
+    users: "0",
+    in_queue: "0",
+    invested_USDT: "0",
+    paid_USDT: "0",
+    position_in_line: "0",
+    current_investment: "0",
+    ready_to_receive: "0",
+    future_payments: "0",
+    total: "0",
+  });
+
   const refs = {
     about: useRef<HTMLDivElement>(null),
     staking: useRef<HTMLDivElement>(null),
@@ -231,7 +243,7 @@ const Home = ({ t }: { t: TFunction }) => {
             <div className="flex items-center gap-5 md:gap-10 inter z-10 flex-wrap justify-center flex-col md:flex-row">
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  3 000
+                  {statistics.users}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("users")}
@@ -239,7 +251,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  1 500
+                  {statistics.in_queue}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("queue")}
@@ -247,7 +259,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  1 500 000
+                  {statistics.invested_USDT}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("invested")}
@@ -255,7 +267,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  1 500 000
+                  {statistics.paid_USDT}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("paid")}
@@ -279,7 +291,7 @@ const Home = ({ t }: { t: TFunction }) => {
             <div className="flex items-center gap-5 md:gap-10 inter z-10 flex-wrap justify-center flex-col md:flex-row">
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  72
+                  {statistics.position_in_line}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("my_queue")}
@@ -287,7 +299,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  1 500
+                  {statistics.current_investment}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("my_invested")}
@@ -295,7 +307,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  1 500
+                  {statistics.ready_to_receive}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("to_claim")}
@@ -303,7 +315,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  1 500
+                  {statistics.future_payments}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("future_claim")}
@@ -311,7 +323,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  1 500 000
+                  {statistics.total}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("all_claim")}
