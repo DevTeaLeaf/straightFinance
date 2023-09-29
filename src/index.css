@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Manrope:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  background-color: #090e0e;
+  height: 100%;
+  overflow-x: hidden;
+  user-select: none;
+}
+input {
+  outline: none;
+}
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  color: red;
+}
+
+::-ms-input-placeholder {
+  color: red;
+}
+/* Fonts */
+.manrope {
+  font-family: "Manrope", sans-serif;
+}
+.inter {
+  font-family: "Inter", sans-serif;
+}
+
+/* Styles */
+.languagesModal {
+  background: linear-gradient(
+    180deg,
+    rgba(111, 228, 198, 0.08) 0%,
+    rgba(0, 0, 0, 0.55) 86.42%
+  );
+}
+.backlight {
+  width: 431px;
+  height: 305px;
+  border-radius: 431px;
+  background: #147073;
+  filter: blur(200px);
+}
+.minBacklight {
+  border-radius: 431px;
+  background: #147073;
+  filter: blur(200px);
+  width: 431px;
+  height: 305px;
+}
+.lightText {
+  text-shadow: 0px 0px 5px #6fe4c6;
+}
+.textGradient {
+  background: linear-gradient(
+    90deg,
+    #6fe4c6 0.82%,
+    #0eb78c 51.98%,
+    #20829a 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.boldTextGradient {
+  background: linear-gradient(146deg, #6fe4c6 0%, #080c0d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.statisticBacklight {
+  width: 638px;
+  height: 133px;
+  background-color: #0eb78c;
+  opacity: 0.699999988079071;
+  filter: blur(109.5px);
+}
+.refBox {
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(111, 228, 198, 0.4) 0%,
+    rgba(111, 228, 198, 0) 86.42%
+  );
+}
+.gradientLineBg {
+  background: linear-gradient(to right, #6fe4c6 0%, rgba(14, 183, 140, 0) 100%);
+}
+.gradientCenterLine {
+  width: 600px;
+  height: 2px;
+  background: linear-gradient(
+        to bottom right,
+        #6fe4c6 0%,
+        rgba(14, 183, 140, 0) 50%
+      )
+      bottom right / 50% 50% no-repeat,
+    linear-gradient(to bottom left, #6fe4c6 0%, rgba(14, 183, 140, 0) 50%)
+      bottom left / 50% 50% no-repeat,
+    linear-gradient(to top left, #6fe4c6 0%, rgba(14, 183, 140, 0) 50%) top left /
+      50% 50% no-repeat,
+    linear-gradient(to top right, #6fe4c6 0%, rgba(14, 183, 140, 0) 50%) top
+      right / 50% 50% no-repeat;
+}
+.underlinedLink {
+  position: relative;
+  text-decoration: none;
+}
+
+.underlinedLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+}
+.boxBg {
+  border-radius: 7px;
+  background: linear-gradient(
+    180deg,
+    rgba(111, 228, 198, 0.37) 0%,
+    rgba(111, 228, 198, 0) 100%
+  );
+  max-width: 387px;
+  width: 100%;
+}
+.faqBorder {
+  border-top: 2.5px rgba(137, 137, 137, 0.25) solid;
+  border-bottom: 2.5px rgba(137, 137, 137, 0.25) solid;
+}
+.faqTransition {
+  transition: 0.5s ease;
+}
+.modalBg {
+  background: linear-gradient(
+    180deg,
+    rgba(111, 228, 198, 0.08) 0%,
+    rgba(0, 0, 0, 0.55) 86.42%
+  );
+  border: 1px solid #6fe4c6;
+}
+@media screen and (max-width: 767px) {
+  .gradientCenterLine {
+    max-width: 300px;
+  }
+  .backlight {
+    width: 331px;
+  }
+  .minBacklight {
+    width: 331px;
+  }
+}
