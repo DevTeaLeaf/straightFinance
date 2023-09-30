@@ -6,6 +6,7 @@ import { withTranslation } from "react-i18next";
 import i18n from "#translate/i18n";
 
 import { ethers } from "ethers";
+
 import { useContract, useSigner, useAccount } from "wagmi";
 
 import {
@@ -89,7 +90,6 @@ const Home = ({ t }: { t: TFunction }) => {
     abi: TokenABI,
     signerOrProvider: signer,
   });
-
   const QMContractWithoutSigner = new ethers.Contract(
     QUEUE_MANAGER,
     QueueManagerABI,
@@ -148,7 +148,6 @@ const Home = ({ t }: { t: TFunction }) => {
       setHaveToClaim(false);
     }
   };
-
   const getStatistics = async () => {
     const result = await QMContractWithoutSigner.USDT();
     console.log(result);
