@@ -149,8 +149,45 @@ const Home = ({ t }: { t: TFunction }) => {
     }
   };
   const getStatistics = async () => {
-    const result = await QMContractWithoutSigner.USDT();
-    console.log(result);
+    try {
+      const userCount = String(await QMContractWithoutSigner.userCount());
+      const inQueue = String(await QMContractWithoutSigner.totalInQueue());
+      const totalInvested = String(
+        await QMContractWithoutSigner.totalInvested()
+      );
+      const totalPaid = String(await QMContractWithoutSigner.totalPaid());
+
+      const myPositionLine = await QMContract.myPositionsInLine();
+      const paymentInfo = await QMContract.paymentInfo(address);
+      const userReward = String(await QMContract.usersReward(address));
+
+      let myPositions = "";
+      for (let i = 0; i < myPositionLine.length; i++) {
+        let pos = String(myPositionLine[i]);
+
+        if (!Number(pos) && !i) {
+          return (myPositions = "0");
+        }
+
+        if (!i && pos) {
+          myPositions += pos;
+        } else {
+          myPositions += `, ${pos}`;
+        }
+      }
+
+      setStatistics({
+        users: userCount,
+        in_queue: inQueue,
+        invested_USDT: totalInvested,
+        paid_USDT: totalPaid,
+        position_in_line: myPositions,
+        current_investment: String(paymentInfo.currentInvestment),
+        ready_to_receive: userReward,
+        future_payments: String(paymentInfo.futureReceive),
+        total: String(paymentInfo.totalRecevied),
+      });
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -160,19 +197,8 @@ const Home = ({ t }: { t: TFunction }) => {
   }, [QMContract, signer]);
 
   useEffect(() => {
-    setStatistics({
-      users: "0",
-      in_queue: "0",
-      invested_USDT: "0",
-      paid_USDT: "0",
-      position_in_line: "0",
-      current_investment: "0",
-      ready_to_receive: "0",
-      future_payments: "0",
-      total: "0",
-    });
     getStatistics();
-  }, []);
+  }, [QMContract, QMContractWithoutSigner]);
   return (
     <>
       <div className="flex flex-col min-h-[100vh] gap-10 md:gap-[100px] overflow-x-hidden">
