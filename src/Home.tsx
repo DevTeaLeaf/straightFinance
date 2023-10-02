@@ -161,7 +161,7 @@ const Home = ({ t }: { t: TFunction }) => {
           await QMContractWithoutSigner.totalInvested()
         );
 
-        const totalPaid = String(await QMContractWithoutSigner.totalPaid());
+        const totalPaid = fromHex(await QMContractWithoutSigner.totalPaid());
 
         setStatistics((prevStatistics) => ({
           ...prevStatistics,
@@ -177,7 +177,9 @@ const Home = ({ t }: { t: TFunction }) => {
       try {
         const myPositionLine = await QMContract.myPositionsInLine();
         const paymentInfo = await QMContract.paymentInfo(address);
-        const userReward = String(await QMContract.usersReward(address));
+        const userReward = await QMContract.usersReward(address);
+
+        console.log(userReward);
 
         let myPositions = "";
         for (let i = 0; i < myPositionLine.length; i++) {
@@ -197,7 +199,7 @@ const Home = ({ t }: { t: TFunction }) => {
           ...prevStatistics,
           position_in_line: myPositions,
           current_investment: fromHex(paymentInfo.currentInvestment),
-          ready_to_receive: userReward,
+          ready_to_receive: String(userReward),
           future_payments: String(paymentInfo.futureReceive),
           total: String(paymentInfo.totalRecevied),
           isStatisticsWithSigner: true,
