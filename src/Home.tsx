@@ -59,6 +59,7 @@ import { ethersPublicProvider } from "#web3/connector";
 const Home = ({ t }: { t: TFunction }) => {
   const [haveToClaim, setHaveToClaim] = useState(false);
 
+  const [isStatistics, setIsStatistics] = useState(false);
   const [statistics, setStatistics] = useState({
     users: "0",
     in_queue: "0",
@@ -151,6 +152,7 @@ const Home = ({ t }: { t: TFunction }) => {
     }
   };
   const getStatistics = async () => {
+    if (isStatistics) return;
     try {
       const userCount = String(await QMContractWithoutSigner.userCount());
       const inQueue = String(await QMContractWithoutSigner.totalInQueue());
@@ -190,6 +192,7 @@ const Home = ({ t }: { t: TFunction }) => {
         future_payments: String(paymentInfo.futureReceive),
         total: String(paymentInfo.totalRecevied),
       });
+      setIsStatistics(true);
     } catch (error) {}
   };
 
