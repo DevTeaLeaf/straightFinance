@@ -21,6 +21,8 @@ import {
 
 import { PECULIARITIES, CATEGORIES } from "#constants";
 
+import { fromHex } from "#utils";
+
 import {
   leftBgArrow,
   statisticBg,
@@ -129,7 +131,7 @@ const Home = ({ t }: { t: TFunction }) => {
 
     const allowance = String(await TContract.allowance(QUEUE_MANAGER, address));
 
-    while (Number(allowance) < amount) {
+    if (Number(allowance) < amount) {
       const wei = amount * Math.pow(10, 18);
       const approve = await TContract.approve(QUEUE_MANAGER, wei.toString(), {
         gasLimit: GAS,
@@ -142,7 +144,7 @@ const Home = ({ t }: { t: TFunction }) => {
   };
   const getClaimInfo = async () => {
     const userReward = String(await QMContract.usersReward(address));
-    if (userReward) {
+    if (Number(userReward)) {
       setHaveToClaim(true);
     } else {
       setHaveToClaim(false);
@@ -152,9 +154,10 @@ const Home = ({ t }: { t: TFunction }) => {
     try {
       const userCount = String(await QMContractWithoutSigner.userCount());
       const inQueue = String(await QMContractWithoutSigner.totalInQueue());
-      const totalInvested = String(
+      const totalInvested = fromHex(
         await QMContractWithoutSigner.totalInvested()
       );
+
       const totalPaid = String(await QMContractWithoutSigner.totalPaid());
 
       const myPositionLine = await QMContract.myPositionsInLine();
@@ -171,7 +174,7 @@ const Home = ({ t }: { t: TFunction }) => {
 
         if (!i && pos) {
           myPositions += pos;
-        } else {
+        } else if (Number(pos)) {
           myPositions += `, ${pos}`;
         }
       }
@@ -182,7 +185,7 @@ const Home = ({ t }: { t: TFunction }) => {
         invested_USDT: totalInvested,
         paid_USDT: totalPaid,
         position_in_line: myPositions,
-        current_investment: String(paymentInfo.currentInvestment),
+        current_investment: fromHex(paymentInfo.currentInvestment),
         ready_to_receive: userReward,
         future_payments: String(paymentInfo.futureReceive),
         total: String(paymentInfo.totalRecevied),
