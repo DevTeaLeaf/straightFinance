@@ -202,8 +202,8 @@ const Home = ({ t }: { t: TFunction }) => {
           position_in_line: myPositions,
           current_investment: fromHex(paymentInfo.currentInvestment),
           ready_to_receive: fromHex(userReward),
-          future_payments: String(paymentInfo.futureReceive),
-          total: String(paymentInfo.totalRecevied),
+          future_payments: fromHex(paymentInfo.futureReceive),
+          total: fromHex(paymentInfo.totalRecevied),
           isStatisticsWithSigner: true,
         }));
       } catch (error) {}
