@@ -120,7 +120,11 @@ const Home = ({ t }: { t: TFunction }) => {
 
   // web3
   const claim = async () => {
-    await QMContract.claim();
+    if (haveToClaim) {
+      await QMContract.claim();
+    } else {
+      alert("Nothing to Claim");
+    }
   };
 
   const invest = async (amount: number) => {
@@ -179,8 +183,6 @@ const Home = ({ t }: { t: TFunction }) => {
         const paymentInfo = await QMContract.paymentInfo(address);
         const userReward = await QMContract.usersReward(address);
 
-        console.log(userReward);
-
         let myPositions = "";
         for (let i = 0; i < myPositionLine.length; i++) {
           let pos = String(myPositionLine[i]);
@@ -199,7 +201,7 @@ const Home = ({ t }: { t: TFunction }) => {
           ...prevStatistics,
           position_in_line: myPositions,
           current_investment: fromHex(paymentInfo.currentInvestment),
-          ready_to_receive: String(userReward),
+          ready_to_receive: fromHex(userReward),
           future_payments: String(paymentInfo.futureReceive),
           total: String(paymentInfo.totalRecevied),
           isStatisticsWithSigner: true,
@@ -403,13 +405,18 @@ const Home = ({ t }: { t: TFunction }) => {
                 </p>
               </div>
             </div>
-            {haveToClaim && (
-              <button onClick={claim} className="bg-[#6FE4C6] rounded-[87px]">
-                <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
-                  {t("claim")}
-                </p>
-              </button>
-            )}
+            <button
+              onClick={claim}
+              className={`${
+                haveToClaim
+                  ? "bg-[#6FE4C6] cursor-pointer"
+                  : "bg-[#9C9C9C] cursor-auto"
+              } rounded-[87px] z-[5]`}
+            >
+              <p className="text-[#000] px-[100px] py-[15px] text-[14px] font-semibold leading-6">
+                {t("claim")}
+              </p>
+            </button>
           </div>
           <div
             ref={refs.referral}
