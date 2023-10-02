@@ -59,7 +59,6 @@ import { ethersPublicProvider } from "#web3/connector";
 const Home = ({ t }: { t: TFunction }) => {
   const [haveToClaim, setHaveToClaim] = useState(false);
 
-  const [isStatistics, setIsStatistics] = useState(false);
   const [statistics, setStatistics] = useState({
     users: "0",
     in_queue: "0",
@@ -70,6 +69,8 @@ const Home = ({ t }: { t: TFunction }) => {
     ready_to_receive: "0",
     future_payments: "0",
     total: "0",
+    isStatisticsWithoutSigner: false,
+    isStatisticsWithSigner: false,
   });
 
   const refs = {
@@ -152,48 +153,57 @@ const Home = ({ t }: { t: TFunction }) => {
     }
   };
   const getStatistics = async () => {
-    if (isStatistics) return;
-    try {
-      const userCount = String(await QMContractWithoutSigner.userCount());
-      const inQueue = String(await QMContractWithoutSigner.totalInQueue());
-      const totalInvested = fromHex(
-        await QMContractWithoutSigner.totalInvested()
-      );
+    if (!statistics.isStatisticsWithoutSigner) {
+      try {
+        const userCount = String(await QMContractWithoutSigner.userCount());
+        const inQueue = String(await QMContractWithoutSigner.totalInQueue());
+        const totalInvested = fromHex(
+          await QMContractWithoutSigner.totalInvested()
+        );
 
-      const totalPaid = String(await QMContractWithoutSigner.totalPaid());
+        const totalPaid = String(await QMContractWithoutSigner.totalPaid());
 
-      const myPositionLine = await QMContract.myPositionsInLine();
-      const paymentInfo = await QMContract.paymentInfo(address);
-      const userReward = String(await QMContract.usersReward(address));
+        setStatistics((prevStatistics) => ({
+          ...prevStatistics,
+          users: userCount,
+          in_queue: inQueue,
+          invested_USDT: totalInvested,
+          paid_USDT: totalPaid,
+          isStatisticsWithoutSigner: true,
+        }));
+      } catch (error) {}
+    }
+    if (!statistics.isStatisticsWithSigner) {
+      try {
+        const myPositionLine = await QMContract.myPositionsInLine();
+        const paymentInfo = await QMContract.paymentInfo(address);
+        const userReward = String(await QMContract.usersReward(address));
 
-      let myPositions = "";
-      for (let i = 0; i < myPositionLine.length; i++) {
-        let pos = String(myPositionLine[i]);
+        let myPositions = "";
+        for (let i = 0; i < myPositionLine.length; i++) {
+          let pos = String(myPositionLine[i]);
 
-        if (!Number(pos) && !i) {
-          return (myPositions = "0");
+          if (!Number(pos) && !i) {
+            return (myPositions = "0");
+          }
+
+          if (!i && pos) {
+            myPositions += pos;
+          } else if (Number(pos)) {
+            myPositions += `, ${pos}`;
+          }
         }
-
-        if (!i && pos) {
-          myPositions += pos;
-        } else if (Number(pos)) {
-          myPositions += `, ${pos}`;
-        }
-      }
-
-      setStatistics({
-        users: userCount,
-        in_queue: inQueue,
-        invested_USDT: totalInvested,
-        paid_USDT: totalPaid,
-        position_in_line: myPositions,
-        current_investment: fromHex(paymentInfo.currentInvestment),
-        ready_to_receive: userReward,
-        future_payments: String(paymentInfo.futureReceive),
-        total: String(paymentInfo.totalRecevied),
-      });
-      setIsStatistics(true);
-    } catch (error) {}
+        setStatistics((prevStatistics) => ({
+          ...prevStatistics,
+          position_in_line: myPositions,
+          current_investment: fromHex(paymentInfo.currentInvestment),
+          ready_to_receive: userReward,
+          future_payments: String(paymentInfo.futureReceive),
+          total: String(paymentInfo.totalRecevied),
+          isStatisticsWithSigner: true,
+        }));
+      } catch (error) {}
+    }
   };
 
   useEffect(() => {
