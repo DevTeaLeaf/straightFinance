@@ -137,6 +137,12 @@ const Home = ({ t }: { t: TFunction }) => {
     const allowance = fromHex(
       await TContract.allowance(address, QUEUE_MANAGER)
     );
+    const minInvest = fromHex(await QMContract.minInvest());
+
+    if (Number(minInvest) < amount) {
+      alert("Lower than min invest amount (10 USDT)");
+      return;
+    }
 
     const wei = amount * Math.pow(10, 18);
     if (Number(allowance) < amount) {
