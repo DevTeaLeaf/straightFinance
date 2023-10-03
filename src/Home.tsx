@@ -209,6 +209,7 @@ const Home = ({ t }: { t: TFunction }) => {
           }
 
           i++;
+          console.log(myPositionLine[i]);
         } while (myPositionLine[i]);
 
         // for (let i = 0; i < myPositionLine.length; i++) {
