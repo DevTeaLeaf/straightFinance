@@ -194,37 +194,19 @@ const Home = ({ t }: { t: TFunction }) => {
 
         let myPositions = "";
 
-        let i = 0;
-        do {
-          let pos: number = myPositionLine[i];
+        for (let i = 0; i < myPositionLine.length; i++) {
+          let pos: string = fromHex(myPositionLine[i]);
 
-          if (!i && pos) {
-            myPositions += String(pos);
-          } else if (i && pos) {
+          if (!i && Number(pos)) {
+            myPositions += pos;
+          } else if (i && Number(pos)) {
             myPositions += `, ${pos}`;
           }
 
-          if (!pos && !i) {
+          if (!Number(pos) && !i) {
             myPositions = "0";
           }
-
-          i++;
-          console.log(myPositionLine[i]);
-        } while (myPositionLine[i]);
-
-        // for (let i = 0; i < myPositionLine.length; i++) {
-        //   let pos: number = myPositionLine[i];
-
-        //   if (!i && pos) {
-        //     myPositions += String(pos);
-        //   } else if (pos) {
-        //     myPositions += `, ${pos}`;
-        //   }
-
-        //   if (!pos && !i) {
-        //     myPositions = "0";
-        //   }
-        // }
+        }
 
         setStatistics((prevStatistics) => ({
           ...prevStatistics,
