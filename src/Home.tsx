@@ -139,7 +139,7 @@ const Home = ({ t }: { t: TFunction }) => {
     );
     const minInvest = fromHex(await QMContract.minInvest());
 
-    if (Number(minInvest) < amount) {
+    if (Number(minInvest) > amount) {
       alert("Lower than min invest amount (10 USDT)");
       return;
     }
