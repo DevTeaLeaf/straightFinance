@@ -615,9 +615,9 @@ const Home = ({ t }: { t: TFunction }) => {
                   </p>
                 </button>
               </div>
-              <p className="mt-8 ml-6 font-light text-[16px] leading-[17.3px] text-center md:text-left">
+              {/* <p className="mt-8 ml-6 font-light text-[16px] leading-[17.3px] text-center md:text-left">
                 {t("in_pools")}: $23 000
-              </p>
+              </p> */}
             </div>
             <img
               className="md:absolute md:top-[-5%] md:z-[-1]"
@@ -702,8 +702,8 @@ const Home = ({ t }: { t: TFunction }) => {
                 <div className="w-full h-[13px] bg-white rounded-[21px] absolute top-0 z-[-1]"></div>
               </div>
               <div className="flex gap-2 font-bold leading-5 text-[16px]">
-                <p>{t("total_sold_out")}: $23000 / </p>
-                <p className="text-[#0EB78C]">$50000</p>
+                <p>{t("total_sold_out")}: $0 / </p>
+                <p className="text-[#0EB78C]">$0</p>
               </div>
             </div>
           </div>
