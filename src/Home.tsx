@@ -206,6 +206,8 @@ const Home = ({ t }: { t: TFunction }) => {
             myPositions += `, ${pos}`;
           }
         }
+        console.log(paymentInfo.totalReceived);
+        console.log(fromHex(paymentInfo.totalReceived));
         setStatistics((prevStatistics) => ({
           ...prevStatistics,
           position_in_line: myPositions,
