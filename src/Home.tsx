@@ -196,7 +196,7 @@ const Home = ({ t }: { t: TFunction }) => {
 
         for (let i = 0; i < myPositionLine.length; i++) {
           console.log(myPositionLine[i]);
-          let pos: string = fromHex(myPositionLine[i]);
+          let pos: string = String(myPositionLine[i]);
           console.log(pos);
           if (!i && Number(pos)) {
             myPositions += pos;
