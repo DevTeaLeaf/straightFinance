@@ -118,16 +118,7 @@
     "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "name": "paymentInfo",
     "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "currentInvestment",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "disributeInvestment",
-        "type": "uint256"
-      },
+      { "internalType": "uint256", "name": "futureReward", "type": "uint256" },
       { "internalType": "uint256", "name": "totalReceived", "type": "uint256" }
     ],
     "stateMutability": "view",

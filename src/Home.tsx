@@ -65,7 +65,7 @@ const Home = ({ t }: { t: TFunction }) => {
     invested_USDT: "0",
     paid_USDT: "0",
     position_in_line: "0",
-    current_investment: "0",
+    future_reward: "0",
     ready_to_receive: "0",
     total: "0",
     isStatisticsWithoutSigner: false,
@@ -203,7 +203,7 @@ const Home = ({ t }: { t: TFunction }) => {
         setStatistics((prevStatistics) => ({
           ...prevStatistics,
           position_in_line: myPositions,
-          current_investment: fromHex(paymentInfo.currentInvestment),
+          future_reward: fromHex(paymentInfo.futureReward),
           ready_to_receive: fromHex(userReward),
           total: fromHex(paymentInfo.totalReceived),
           isStatisticsWithSigner: true,
@@ -376,7 +376,7 @@ const Home = ({ t }: { t: TFunction }) => {
               </div>
               <div className="flex flex-col items-center gap-[6px]">
                 <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  {statistics.current_investment}
+                  {statistics.future_reward}
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("my_invested")}
@@ -711,7 +711,7 @@ const Home = ({ t }: { t: TFunction }) => {
             <div>
               <h1 className="textGradient text-[20px] leading-[21px] md:text-[51px] md:leading-[51px] font-bold uppercase mb-[16px] md:mb-6">
                 {t("nft_sell")}
-              </h1>{" "}
+              </h1>
               <div className="text-white leading-[18px] md:leading-[29.1px] text-[14px] md:text-[20px] flex flex-start flex-col gap-10 max-w-[670px]">
                 <p>{t("nft_sell_1")}</p>
                 <p>{t("nft_sell_2")}</p>

@@ -40,8 +40,7 @@ contract QueueManager is Ownable {
     }
 
     struct PaymentInfo {
-        uint currentInvestment;
-        uint disributeInvestment;
+        uint futureReward;
         uint totalReceived;
     }
 
@@ -64,7 +63,7 @@ contract QueueManager is Ownable {
         queue[userCount].reward = reward;
         userCount++;
         totalInvested+=amount;
-        paymentInfo[msg.sender].currentInvestment += amount;
+        paymentInfo[msg.sender].futureReward += reward;
     }
 
     
@@ -138,7 +137,7 @@ contract QueueManager is Ownable {
             if(int(amount) - int(reward) > 0){
                 queue[currentUser].reward = 0;
                 usersReward[queue[currentUser].userAddress] += reward;
-                paymentInfo[queue[currentUser].userAddress].currentInvestment = queue[currentUser].invested - paymentInfo[queue[currentUser].userAddress].disributeInvestment; 
+                paymentInfo[queue[currentUser].userAddress].futureReward -= reward; 
                 amount -= reward;
                 totalReward += reward;
                 currentUser++;
@@ -146,8 +145,7 @@ contract QueueManager is Ownable {
             } else {
                 queue[currentUser].reward -= amount;
                 usersReward[queue[currentUser].userAddress] += amount;
-                paymentInfo[queue[currentUser].userAddress].currentInvestment -= amount;
-                paymentInfo[queue[currentUser].userAddress].disributeInvestment += amount;
+                paymentInfo[queue[currentUser].userAddress].futureReward -= amount; 
                 totalReward += amount;
                 amount = 0;
                 break;
