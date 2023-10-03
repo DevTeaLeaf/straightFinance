@@ -140,15 +140,16 @@ const Home = ({ t }: { t: TFunction }) => {
     console.log("allowance", Number(allowance));
     console.log("amount", amount);
     console.log("is alowance < amount?", Number(allowance) < amount);
+
+    const wei = amount * Math.pow(10, 18);
     if (Number(allowance) < amount) {
-      const wei = amount * Math.pow(10, 18);
       const approve = await TContract.approve(QUEUE_MANAGER, wei.toString(), {
         gasLimit: GAS,
       });
       await approve.wait();
     }
 
-    const transaction = await QMContract.invest(amount, refAddress);
+    const transaction = await QMContract.invest(wei.toString(), refAddress);
     await transaction.wait();
   };
   const getClaimInfo = async () => {
