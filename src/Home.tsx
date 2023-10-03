@@ -191,19 +191,19 @@ const Home = ({ t }: { t: TFunction }) => {
         const myPositionLine = await QMContract.myPositionsInLine();
         const paymentInfo = await QMContract.paymentInfo(address);
         const userReward = await QMContract.usersReward(address);
-        console.log(paymentInfo.totalReceived);
-        console.log(fromHex(paymentInfo.totalReceived));
+
         let myPositions = "";
         for (let i = 0; i < myPositionLine.length; i++) {
-          let pos = String(myPositionLine[i]);
+          let pos: number = myPositionLine[i];
 
-          if (!Number(pos) && !i) {
-            return (myPositions = "0");
+          if (!pos && !i) {
+            myPositions = "0";
+            break;
           }
 
           if (!i && pos) {
-            myPositions += pos;
-          } else if (Number(pos)) {
+            myPositions += String(pos);
+          } else if (pos) {
             myPositions += `, ${pos}`;
           }
         }
