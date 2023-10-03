@@ -196,15 +196,15 @@ const Home = ({ t }: { t: TFunction }) => {
         for (let i = 0; i < myPositionLine.length; i++) {
           let pos: number = myPositionLine[i];
 
-          if (!pos && !i) {
-            myPositions = "0";
-            break;
-          }
-
           if (!i && pos) {
             myPositions += String(pos);
           } else if (pos) {
             myPositions += `, ${pos}`;
+          }
+
+          if (!pos && !i) {
+            myPositions = "0";
+            break;
           }
         }
 
