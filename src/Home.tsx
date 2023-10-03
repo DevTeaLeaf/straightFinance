@@ -135,7 +135,9 @@ const Home = ({ t }: { t: TFunction }) => {
     }
 
     const allowance = String(await TContract.allowance(QUEUE_MANAGER, address));
-
+    console.log("allowance", Number(allowance));
+    console.log("amount", amount);
+    console.log("is alowance < amount?", Number(allowance) < amount);
     if (Number(allowance) < amount) {
       const wei = amount * Math.pow(10, 18);
       const approve = await TContract.approve(QUEUE_MANAGER, wei.toString(), {
