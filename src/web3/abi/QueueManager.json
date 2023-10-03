@@ -123,6 +123,11 @@
         "name": "currentInvestment",
         "type": "uint256"
       },
+      {
+        "internalType": "uint256",
+        "name": "disributeInvestment",
+        "type": "uint256"
+      },
       { "internalType": "uint256", "name": "totalReceived", "type": "uint256" }
     ],
     "stateMutability": "view",
@@ -207,6 +212,13 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "totalReward",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       { "internalType": "address", "name": "newOwner", "type": "address" }
     ],
@@ -230,10 +242,7 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "address", "name": "_to", "type": "address" },
-      { "internalType": "uint256", "name": "_amount", "type": "uint256" }
-    ],
+    "inputs": [],
     "name": "work",
     "outputs": [],
     "stateMutability": "nonpayable",

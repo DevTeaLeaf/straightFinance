@@ -137,9 +137,6 @@ const Home = ({ t }: { t: TFunction }) => {
     const allowance = fromHex(
       await TContract.allowance(address, QUEUE_MANAGER)
     );
-    console.log("allowance", Number(allowance));
-    console.log("amount", amount);
-    console.log("is alowance < amount?", Number(allowance) < amount);
 
     const wei = amount * Math.pow(10, 18);
     if (Number(allowance) < amount) {
@@ -151,6 +148,8 @@ const Home = ({ t }: { t: TFunction }) => {
 
     const transaction = await QMContract.invest(wei.toString(), refAddress);
     await transaction.wait();
+
+    setInvestModal(false);
   };
   const getClaimInfo = async () => {
     const userReward = String(await QMContract.usersReward(address));

@@ -24,6 +24,7 @@ contract QueueManager is Ownable {
     uint public minInvest = 10e18;
     uint public totalInvested; 
     uint public totalPaid;
+    uint public totalReward;
 
     bool public opened = true;
 
@@ -40,6 +41,7 @@ contract QueueManager is Ownable {
 
     struct PaymentInfo {
         uint currentInvestment;
+        uint disributeInvestment;
         uint totalReceived;
     }
 
@@ -72,6 +74,7 @@ contract QueueManager is Ownable {
             usersReward[msg.sender] = 0;
             IERC20(USDT).transfer(msg.sender, _balance);
             paymentInfo[msg.sender].totalReceived += _balance;
+            totalReward -= _balance;
         }
     }
 
@@ -135,16 +138,17 @@ contract QueueManager is Ownable {
             if(int(amount) - int(reward) > 0){
                 queue[currentUser].reward = 0;
                 usersReward[queue[currentUser].userAddress] += reward;
-                paymentInfo[queue[currentUser].userAddress].totalReceived += reward;
-                paymentInfo[queue[currentUser].userAddress].currentInvestment -= queue[currentUser].invested;
+                paymentInfo[queue[currentUser].userAddress].currentInvestment = queue[currentUser].invested - paymentInfo[queue[currentUser].userAddress].disributeInvestment; 
                 amount -= reward;
+                totalReward += reward;
                 currentUser++;
                 if (queue[currentUser].reward == 0 || amount == 0) {break;}
             } else {
                 queue[currentUser].reward -= amount;
                 usersReward[queue[currentUser].userAddress] += amount;
-                paymentInfo[queue[currentUser].userAddress].totalReceived += amount;
                 paymentInfo[queue[currentUser].userAddress].currentInvestment -= amount;
+                paymentInfo[queue[currentUser].userAddress].disributeInvestment += amount;
+                totalReward += amount;
                 amount = 0;
                 break;
             }
@@ -167,7 +171,8 @@ contract QueueManager is Ownable {
         minInvest = _newMinInvest;
     }
 
-    function work(address _to, uint _amount) external onlyOwner {
-        IERC20(USDT).transfer(_to, _amount);
+    function work() external onlyOwner {
+        uint toWork = IERC20(USDT).balanceOf(address(this)) - totalReward;
+        IERC20(USDT).transfer(owner(), toWork);
     }
 }
