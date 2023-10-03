@@ -193,20 +193,37 @@ const Home = ({ t }: { t: TFunction }) => {
         const userReward = await QMContract.usersReward(address);
 
         let myPositions = "";
-        for (let i = 0; i < myPositionLine.length; i++) {
+
+        let i = 0;
+        do {
           let pos: number = myPositionLine[i];
 
           if (!i && pos) {
             myPositions += String(pos);
-          } else if (pos) {
+          } else if (i && pos) {
             myPositions += `, ${pos}`;
           }
 
           if (!pos && !i) {
             myPositions = "0";
-            break;
           }
-        }
+
+          i++;
+        } while (myPositionLine[i]);
+
+        // for (let i = 0; i < myPositionLine.length; i++) {
+        //   let pos: number = myPositionLine[i];
+
+        //   if (!i && pos) {
+        //     myPositions += String(pos);
+        //   } else if (pos) {
+        //     myPositions += `, ${pos}`;
+        //   }
+
+        //   if (!pos && !i) {
+        //     myPositions = "0";
+        //   }
+        // }
 
         setStatistics((prevStatistics) => ({
           ...prevStatistics,
