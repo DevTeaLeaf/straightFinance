@@ -195,9 +195,8 @@ const Home = ({ t }: { t: TFunction }) => {
         let myPositions = "";
 
         for (let i = 0; i < myPositionLine.length; i++) {
-          console.log(myPositionLine[i]);
           let pos: string = String(myPositionLine[i]);
-          console.log(pos);
+
           if (!i && Number(pos)) {
             myPositions += pos;
           } else if (i && Number(pos)) {
@@ -456,7 +455,7 @@ const Home = ({ t }: { t: TFunction }) => {
               className="bg-[#6FE4C6] rounded-[87px]"
             >
               <p className="text-[#000] px-[60px] py-[15px] text-[14px] font-semibold leading-6">
-                {t("become_ref")}
+                {t("get_ref")}
               </p>
             </button>
           </div>
