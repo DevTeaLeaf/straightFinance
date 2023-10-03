@@ -134,7 +134,9 @@ const Home = ({ t }: { t: TFunction }) => {
       refAddress = "0x0000000000000000000000000000000000000000";
     }
 
-    const allowance = String(await TContract.allowance(address, QUEUE_MANAGER));
+    const allowance = fromHex(
+      await TContract.allowance(address, QUEUE_MANAGER)
+    );
     console.log("allowance", Number(allowance));
     console.log("amount", amount);
     console.log("is alowance < amount?", Number(allowance) < amount);
