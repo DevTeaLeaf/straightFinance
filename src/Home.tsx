@@ -67,7 +67,6 @@ const Home = ({ t }: { t: TFunction }) => {
     position_in_line: "0",
     current_investment: "0",
     ready_to_receive: "0",
-    future_payments: "0",
     total: "0",
     isStatisticsWithoutSigner: false,
     isStatisticsWithSigner: false,
@@ -202,8 +201,7 @@ const Home = ({ t }: { t: TFunction }) => {
           position_in_line: myPositions,
           current_investment: fromHex(paymentInfo.currentInvestment),
           ready_to_receive: fromHex(userReward),
-          future_payments: fromHex(paymentInfo.futureReceive),
-          total: fromHex(paymentInfo.totalRecevied),
+          total: fromHex(paymentInfo.totalReceived),
           isStatisticsWithSigner: true,
         }));
       } catch (error) {}
@@ -386,14 +384,6 @@ const Home = ({ t }: { t: TFunction }) => {
                 </h3>
                 <p className="text-[16px] text-[#95A1B4] leading-[22px]">
                   {t("to_claim")}
-                </p>
-              </div>
-              <div className="flex flex-col items-center gap-[6px]">
-                <h3 className="text-[32px] md:text-[48px] text-[#EBF7FD] font-bold leading-[64px] ">
-                  {statistics.future_payments}
-                </h3>
-                <p className="text-[16px] text-[#95A1B4] leading-[22px]">
-                  {t("future_claim")}
                 </p>
               </div>
               <div className="flex flex-col items-center gap-[6px]">

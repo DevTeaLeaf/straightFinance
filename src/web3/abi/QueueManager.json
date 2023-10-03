@@ -79,6 +79,13 @@
   },
   {
     "inputs": [],
+    "name": "myFuturePayments",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "myPositionsInLine",
     "outputs": [
       { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
@@ -90,6 +97,13 @@
     "inputs": [],
     "name": "nextRewardCount",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "opened",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -109,8 +123,7 @@
         "name": "currentInvestment",
         "type": "uint256"
       },
-      { "internalType": "uint256", "name": "futureReceive", "type": "uint256" },
-      { "internalType": "uint256", "name": "totalRecevied", "type": "uint256" }
+      { "internalType": "uint256", "name": "totalReceived", "type": "uint256" }
     ],
     "stateMutability": "view",
     "type": "function"

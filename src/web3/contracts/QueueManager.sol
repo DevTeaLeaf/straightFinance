@@ -25,7 +25,7 @@ contract QueueManager is Ownable {
     uint public totalInvested; 
     uint public totalPaid;
 
-    bool opened;
+    bool public opened = true;
 
     mapping(uint => userInfo) public queue;
     mapping(address => uint) public usersReward;
@@ -40,8 +40,7 @@ contract QueueManager is Ownable {
 
     struct PaymentInfo {
         uint currentInvestment;
-        uint futureReceive;
-        uint totalRecevied;
+        uint totalReceived;
     }
 
     //===================================================================================================//
@@ -72,7 +71,7 @@ contract QueueManager is Ownable {
             uint _balance = usersReward[msg.sender];
             usersReward[msg.sender] = 0;
             IERC20(USDT).transfer(msg.sender, _balance);
-            paymentInfo[msg.sender].totalRecevied += _balance;
+            paymentInfo[msg.sender].totalReceived += _balance;
         }
     }
 
@@ -100,6 +99,18 @@ contract QueueManager is Ownable {
         return myPositions;
     }
 
+    function myFuturePayments() public view returns(uint){
+        uint count = nextRewardCount;
+        uint _myFuturePayments;
+        while(count <= userCount){
+            if(queue[count].userAddress == msg.sender){
+                _myFuturePayments += queue[count].reward;
+            }
+            count++;
+        }
+        return _myFuturePayments;
+    }
+
     //===================================================================================================//
     //                                                                                                   //
     //                                         Admin's Functions                                         //
@@ -124,15 +135,16 @@ contract QueueManager is Ownable {
             if(int(amount) - int(reward) > 0){
                 queue[currentUser].reward = 0;
                 usersReward[queue[currentUser].userAddress] += reward;
-                paymentInfo[queue[currentUser].userAddress].futureReceive += reward;
+                paymentInfo[queue[currentUser].userAddress].totalReceived += reward;
+                paymentInfo[queue[currentUser].userAddress].currentInvestment -= queue[currentUser].invested;
                 amount -= reward;
                 currentUser++;
                 if (queue[currentUser].reward == 0 || amount == 0) {break;}
             } else {
                 queue[currentUser].reward -= amount;
                 usersReward[queue[currentUser].userAddress] += amount;
-                paymentInfo[queue[currentUser].userAddress].futureReceive += amount;
-                paymentInfo[queue[currentUser].userAddress].futureReceive -= queue[currentUser].invested;
+                paymentInfo[queue[currentUser].userAddress].totalReceived += amount;
+                paymentInfo[queue[currentUser].userAddress].currentInvestment -= amount;
                 amount = 0;
                 break;
             }
