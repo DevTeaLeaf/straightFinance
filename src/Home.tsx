@@ -191,7 +191,8 @@ const Home = ({ t }: { t: TFunction }) => {
         const myPositionLine = await QMContract.myPositionsInLine();
         const paymentInfo = await QMContract.paymentInfo(address);
         const userReward = await QMContract.usersReward(address);
-
+        console.log(paymentInfo.totalReceived);
+        console.log(fromHex(paymentInfo.totalReceived));
         let myPositions = "";
         for (let i = 0; i < myPositionLine.length; i++) {
           let pos = String(myPositionLine[i]);
@@ -206,8 +207,7 @@ const Home = ({ t }: { t: TFunction }) => {
             myPositions += `, ${pos}`;
           }
         }
-        console.log(paymentInfo.totalReceived);
-        console.log(fromHex(paymentInfo.totalReceived));
+
         setStatistics((prevStatistics) => ({
           ...prevStatistics,
           position_in_line: myPositions,
