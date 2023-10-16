@@ -28,7 +28,7 @@ const ReferralModal: React.FC<IReferralModal> = ({ t, setModal }) => {
 
   const copyText = (text: string | undefined) => {
     if (text && isValidAddress(text)) {
-      const link = `${window.location.host}/ref=${text}`;
+      const link = `${window.location.host}#${text}`;
       navigator.clipboard.writeText(link);
       alert("Link copied!");
     } else {

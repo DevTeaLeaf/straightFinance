@@ -5,7 +5,6 @@ import medium from "./medium.png";
 import telegram from "./telegram.png";
 import twitter from "./twitter.png";
 import copyright from "./copyright.png";
-import leftBgArrow from "./leftBgArrow.png";
 import net from "./net.png";
 import statisticBg from "./statisticBg.png";
 import bnb from "./bnb.png";
@@ -21,7 +20,6 @@ import card from "./card.png";
 import donut from "./donut.png";
 import plus from "./plus.png";
 import arrow from "./arrow.png";
-import rightBgArrow from "./rightBgArrow.png";
 import close from "./close.png";
 import move from "./move.png";
 import moveActive from "./moveActive.png";
@@ -34,7 +32,6 @@ export {
   telegram,
   twitter,
   copyright,
-  leftBgArrow,
   net,
   statisticBg,
   bnb,
@@ -51,7 +48,6 @@ export {
   plus,
   arrow,
   close,
-  rightBgArrow,
   move,
   moveActive,
 };

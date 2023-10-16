@@ -15,6 +15,7 @@
   "dependencies": {
     "@web3modal/ethereum": "^2.3.7",
     "@web3modal/react": "^2.3.7",
+    "framer-motion": "^10.16.4",
     "i18next": "^23.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

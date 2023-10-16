@@ -23,8 +23,9 @@ import { PECULIARITIES, CATEGORIES } from "#constants";
 
 import { fromHex } from "#utils";
 
+import { Arrows } from "#animations";
+
 import {
-  leftBgArrow,
   statisticBg,
   net,
   twitter,
@@ -43,7 +44,6 @@ import {
   twoCards,
   donut,
   arrow,
-  rightBgArrow,
 } from "#assets/img";
 
 import {
@@ -129,7 +129,7 @@ const Home = ({ t }: { t: TFunction }) => {
   const invest = async (amount: number) => {
     let refAddress;
     if (window.location.pathname.length > 40) {
-      refAddress = window.location.pathname.slice(5);
+      refAddress = window.location.pathname.slice(1);
     } else {
       refAddress = "0x0000000000000000000000000000000000000000";
     }
@@ -239,12 +239,14 @@ const Home = ({ t }: { t: TFunction }) => {
             className="flex flex-col items-center justify-center gap-[30px] netBg"
           >
             <div className="minBacklight absolute top-[10%] md:hidden z-[-1]"></div>
-            <div className="absolute left-[-5%] top-[0] z-[-1] md:block hidden">
-              <img src={leftBgArrow} alt="bgArrow" />
+            <div className="absolute left-[-3%] top-[0] z-[-1] md:block hidden">
+              {/* <img src={leftBgArrow} alt="bgArrow" /> */}
+              <Arrows direction="left" />
               <div className="backlight absolute top-[35%] left-[5%]"></div>
             </div>
             <div className="absolute right-[-3%] top-[0] z-[-1] md:block hidden">
-              <img src={rightBgArrow} alt="bgArrow" />
+              {/* <img src={rightBgArrow} alt="bgArrow" /> */}
+              <Arrows direction="right" />
               <div className="backlight absolute top-[40%] right-[5%]"></div>
             </div>
             <h1 className="text-[#6FE4C6] text-center text-[24px] md:text-[48px] font-bold leading-[30px] md:leading-[58px] max-w-[300px] md:max-w-[750px]">
