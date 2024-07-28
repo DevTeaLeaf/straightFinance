@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+[![codecov](https://codecov.io/github/DevTeaLeaf/straightFinance/graph/badge.svg?token=EMO4BQNTBM)](https://codecov.io/github/DevTeaLeaf/straightFinance)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
